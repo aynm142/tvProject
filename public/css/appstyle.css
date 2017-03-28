@@ -1,0 +1,89 @@
+body, html, #main-content {
+    height: 100%;
+}
+
+#main-content {
+    min-width: 1360px;
+}
+
+/* ---------- header ----------------- */
+
+header {
+    width: 100%;
+    height: 80px;
+    box-sizing: border-box;
+    background-color: skyblue;
+}
+
+header #logo-div {
+    width: 50%;
+    text-align: left;
+    display: inline-block;
+    position:relative;
+}
+
+#logo-div img {
+    margin: 5px 0 0 10px;
+    width: 300px;
+    height: 70px;
+}
+
+header #accManager {
+    text-align: right;
+    width: 50%;
+    display: inline-block;
+    font-size: 20px;
+    padding-right: 50px;
+    position:relative;
+}
+
+/* ------------- main ------------------ */
+
+#main-container {
+    height: calc(100% - 80px);
+    width: 100%;
+}
+
+#left-menu {
+    display: inline-block;
+    background-color: skyblue;
+}
+
+#videos {
+    padding: 50px 0 0 30px;
+    display: inline-block;
+    width: calc(100% - 80px);
+}
+
+.video {
+    display: inline-block;
+    margin-right: 45px;
+    margin-bottom: 30px;
+}
+
+/* ---------- navigation bar -----------*/
+
+
+#left-menu {
+    height: 100%;
+    width: 80px;
+    display: inline-block;
+    float: left;
+}
+
+#left-menu ul {
+    padding-left: 3px;
+}
+
+#left-menu li a {
+    text-decoration: none;
+    color: black;
+}
+#left-menu li {
+    width: 70px;
+    height: 70px;
+    padding-top: 15px;
+}
+
+/* ---------- main -----------*/
+
