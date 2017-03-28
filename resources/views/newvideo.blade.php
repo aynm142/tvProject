@@ -7,8 +7,9 @@
     {!! Form::label('description', 'Description: ') !!}<br>
     {!! Form::textarea('description') !!}}<br>
     {!! Form::label('logo_url', 'Logo image') !!}
-    <input type="file" name="logo_url" id="logo_url">
-    {{--{!!  !!}--}}
+    <input type="file" name="logo_url" id="logo_url"><br>
+    {!! Form::label('background_url', 'Background image') !!}
+    <input type="file" name="background_url" id="background_url">
     <br>
     {!! Form::submit('Add new category') !!}
     {!! Form::close() !!}

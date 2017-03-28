@@ -14,7 +14,9 @@
 Route::get('/', 'Tv@index');
 Route::get('newcat', 'Tv@createCategory');
 Route::post('newcat', 'Tv@storeCategory');
+
 Route::get('cat', 'Tv@categoryAPI');
+Route::get('vid', 'Tv@videoAPI');
 
 Route::get('newvideo', 'Tv@createVideo');
 Route::post('newvideo', 'Tv@storeVideo');

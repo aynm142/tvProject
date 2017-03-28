@@ -37,19 +37,28 @@ class Tv extends Controller
         $name_logo = Input::file('logo_url')->getClientOriginalName();
         $extension_logo = Input::file('logo_url')->getClientOriginalExtension();
 
+        $name_background = Input::file('background_url')->getClientOriginalName();
+        $extension_background = Input::file('background_url')->getClientOriginalExtension();
+
         $video = Video::create([
             'video_name' => request('video_name'),
             'description' => request('description'),
             'logo_url' => $name_logo,
+            'background_url' => $name_background,
             'category_id' => 1
         ]);
 
-        $video->logo_url = $video->id . '.' . $extension_logo;
+        $video->logo_url = $video->id . 'l.' . $extension_logo;
+        $video->background_url = $video->id . 'b.' . $extension_background;
         $video->save();
 
         $file_logo = Input::file('logo_url');
         $path_logo = public_path('images/logo/');
         $file_logo->move($path_logo, $video->logo_url);
+
+        $file_background = Input::file('background_url');
+        $path_background = public_path('images/background/');
+        $file_background->move($path_background, $video->background_url);
 
         return redirect('/');
     }
@@ -58,6 +67,11 @@ class Tv extends Controller
     public function categoryAPI()
     {
         return Category::all();
+    }
+
+    public function videoAPI()
+    {
+        return Video::all();
     }
 }
 
