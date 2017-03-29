@@ -33,7 +33,7 @@
             @if (Auth::check())
                 <ul>
                     <li>{{ Html::link('newcat', 'Add Category') }}</li>
-                    <li><a href="#">Add video</a></li>
+                    <li>{{ Html::link('newvideo', 'Add Video') }}</li>
                 </ul>
             @endif
         </div>

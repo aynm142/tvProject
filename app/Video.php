@@ -10,6 +10,8 @@ class Video extends Model
         'video_name',
         'description',
         'logo_url',
+        'background_url',
+        'video_url',
         'category_id',
     ];
 
