@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\CreateCategoryRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Category;
 use App\Video;
 use Illuminate\Support\Facades\Input;
@@ -27,9 +28,19 @@ class Tv extends Controller
         return redirect('/');
     }
 
+    public function showCategories()
+    {
+        $categories = DB::table('categories')->pluck('category_name');
+        return view('showcat', compact('categories'));
+    }
     public function createVideo()
     {
-        return view('newvideo');
+        $categories_list = Category::pluck('category_name', 'id');
+        return view('newvideo', compact('categories_list'));
+    }
+    public function test()
+    {
+        //
     }
 
     public function storeVideo()
@@ -49,7 +60,7 @@ class Tv extends Controller
             'video_url' => $name_video,
             'logo_url' => $name_logo,
             'background_url' => $name_background,
-            'category_id' => 1
+            'category_id' => request('category'),
         ]);
 
         $video->logo_url = '/pubic/images/logo/' . $video->id . 'l.' . $extension_logo;

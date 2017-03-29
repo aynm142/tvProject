@@ -6,6 +6,7 @@
     {!! Form::text('video_name') !!}<br>
     {!! Form::label('description', 'Description: ') !!}<br>
     {!! Form::textarea('description') !!}}<br>
+    {{ Form::select('category', $categories_list) }}
     {!! Form::label('logo_url', 'Logo image') !!}
     <input type="file" name="logo_url" id="logo_url">
     {!! Form::label('background_url', 'Background image') !!}
