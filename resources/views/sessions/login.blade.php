@@ -1,7 +1,7 @@
 @extends('app')
 
 @section('content')
-    <form method="POST" action="/tvProject/public/login">
+    <form method="POST" action="/login">
         {{ csrf_field() }}
 
         <div>
