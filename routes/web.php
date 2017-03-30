@@ -13,19 +13,20 @@
 
 Route::get('/', 'TvController@index');
 
-// ============= Categories ============== //
+// ================ Categories ================= //
 
-Route::get('newcat', 'CategoryController@createCategory');
-Route::post('newcat', 'CategoryController@storeCategory');
-Route::get('cat/{id}', 'CategoryController@showCategory');
-Route::get('/showcat', 'CategoryController@showCategories');
-Route::get('cat', 'CategoryController@categoryAPI');
+Route::get('/category/new', 'CategoryController@createCategory');
+Route::post('/category/new', 'CategoryController@storeCategory');
+Route::get('/category/{id}', 'CategoryController@showCategory');
+Route::get('/category/show', 'CategoryController@showCategories');
+Route::get('/category/get', 'CategoryController@categoryAPI');
+Route::get('/category/remove', 'CategoryController@destroyCategory');
 
-// =============== Videos ================= //
+// ================= Videos =================== //
 
-Route::get('newvideo', 'TvController@createVideo');
-Route::post('newvideo', 'TvController@storeVideo');
-Route::get('vid', 'TvController@videoAPI');
+Route::get('newvideo', 'VideoController@createVideo');
+Route::post('newvideo', 'VideoController@storeVideo');
+Route::get('vid', 'VideoController@videoAPI');
 
 // ================ Authentication ================ //
 

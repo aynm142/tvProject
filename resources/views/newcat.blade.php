@@ -1,7 +1,7 @@
 @extends('app')
 
 @section('content')
-    {!! Form::open(['url' => '/newcat']) !!}
+    {!! Form::open(['url' => '/category/new']) !!}
     {!! Form::hidden('user_id', 1) !!}
     {!! Form::label('category_name', 'Category name: ') !!}
     {!! Form::text('category_name') !!}

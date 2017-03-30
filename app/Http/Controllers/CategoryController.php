@@ -38,6 +38,8 @@ class CategoryController extends Controller
 
     public function categoryAPI()
     {
-        return Category::all();
+        dd(2);
+//        dd(Category::all());
+//        return Category::all();
     }
 }
