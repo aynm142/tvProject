@@ -17,7 +17,7 @@
     <header>
         <div id="logo-div">
             {{--<img src="{!! asset('images/logo.png') !!}" alt="logo">--}}
-            <a href="/tvProject/public">Home page</a>
+            <a href="/">Home page</a>
         </div><div id="accManager">
             @if (Auth::check())
                 <p style="text-align: right">Welcome, {{  Auth::user()->name }}</p>
@@ -33,9 +33,9 @@
         <div id="left-menu">
             @if (Auth::check())
                 <ul>
-                    <li>{{ Html::link('newcat', 'Add Category') }}</li>
+                    <li>{{ Html::link('/category/new', 'Add Category') }}</li>
                     <li>{{ Html::link('newvideo', 'Add Video') }}</li>
-                    <li>{{ Html::link('showcat', 'Show Categories') }}</li>
+                    <li>{{ Html::link('/category/show', 'Show Categories') }}</li>
                 </ul>
             @endif
         </div>
