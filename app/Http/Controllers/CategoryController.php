@@ -13,33 +13,31 @@ use Illuminate\Support\Facades\DB;
 
 class CategoryController extends Controller
 {
-    public function createCategory()
+    public function create()
     {
         return view('newcat');
     }
 
-    public function storeCategory(CreateCategoryRequest $request)
+    public function store(CreateCategoryRequest $request)
     {
         Category::create($request->all());
         return redirect('/');
     }
 
-    public function showCategory($id)
+    public function show($id)
     {
         $videos = Video::where('category_id', $id)->get();
         return $videos;
     }
 
-    public function showCategories()
+    public function showAll()
     {
         $categories = DB::table('categories')->pluck('category_name');
         return view('showcat', compact('categories'));
     }
 
-    public function categoryAPI()
+    public function api()
     {
-        dd(2);
-//        dd(Category::all());
-//        return Category::all();
+        return Category::all();
     }
 }

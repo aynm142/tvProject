@@ -15,12 +15,12 @@ Route::get('/', 'TvController@index');
 
 // ================ Categories ================= //
 
-Route::get('/category/new', 'CategoryController@createCategory');
-Route::post('/category/new', 'CategoryController@storeCategory');
-Route::get('/category/{id}', 'CategoryController@showCategory');
-Route::get('/category/show', 'CategoryController@showCategories');
-Route::get('/category/get', 'CategoryController@categoryAPI');
-Route::get('/category/remove', 'CategoryController@destroyCategory');
+Route::get('/category/new', 'CategoryController@create');
+Route::post('/category/new', 'CategoryController@store');
+Route::get('/category/show', 'CategoryController@showAll');
+Route::get('/category/get', 'CategoryController@api');
+Route::get('/category/remove', 'CategoryController@destroy');
+Route::get('/category/{id}', 'CategoryController@show');
 
 // ================= Videos =================== //
 
