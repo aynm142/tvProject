@@ -2,45 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\CreateCategoryRequest;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-use App\Category;
+use App\Http\Requests\CreateCategoryRequest;
+use App\User;
 use App\Video;
+use App\Category;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\DB;
 
-class Tv extends Controller
+class VideoController extends Controller
 {
-
-    public function index()
-    {
-        return view('index');
-    }
-
-    public function createCategory()
-    {
-        return view('newcat');
-    }
-
-    public function storeCategory(CreateCategoryRequest $request)
-    {
-        Category::create($request->all());
-        return redirect('/');
-    }
-
-    public function showCategories()
-    {
-        $categories = DB::table('categories')->pluck('category_name');
-        return view('showcat', compact('categories'));
-    }
     public function createVideo()
     {
         $categories_list = Category::pluck('category_name', 'id');
         return view('newvideo', compact('categories_list'));
-    }
-    public function test()
-    {
-        //
     }
 
     public function storeVideo()
@@ -83,15 +58,8 @@ class Tv extends Controller
         return redirect('/');
     }
 
-
-    public function categoryAPI()
-    {
-        return Category::all();
-    }
-
     public function videoAPI()
     {
         return Video::all();
     }
 }
-

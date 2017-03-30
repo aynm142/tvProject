@@ -11,20 +11,24 @@
 |
 */
 
-Route::get('/', 'Tv@index');
-Route::get('newcat', 'Tv@createCategory');
-Route::post('newcat', 'Tv@storeCategory');
+Route::get('/', 'TvController@index');
 
-//Route::get('test', 'Tv@test');
-Route::get('/showcat', 'Tv@showCategories');
+// ============= Categories ============== //
 
-Route::get('cat', 'Tv@categoryAPI');
-Route::get('vid', 'Tv@videoAPI');
+Route::get('newcat', 'CategoryController@createCategory');
+Route::post('newcat', 'CategoryController@storeCategory');
+Route::get('cat/{id}', 'CategoryController@showCategory');
+Route::get('/showcat', 'CategoryController@showCategories');
+Route::get('cat', 'CategoryController@categoryAPI');
 
-Route::get('newvideo', 'Tv@createVideo');
-Route::post('newvideo', 'Tv@storeVideo');
+// =============== Videos ================= //
 
-//Auth
+Route::get('newvideo', 'TvController@createVideo');
+Route::post('newvideo', 'TvController@storeVideo');
+Route::get('vid', 'TvController@videoAPI');
+
+// ================ Authentication ================ //
+
 Route::get('register', 'RegistrationController@create');
 Route::post('register', 'RegistrationController@store');
 
@@ -32,3 +36,4 @@ Route::get('login', 'SessionsController@create');
 Route::post('login', 'SessionsController@store');
 
 Route::get('logout', 'SessionsController@destroy');
+//Route::get('test', 'TvController@test');
