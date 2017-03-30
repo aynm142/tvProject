@@ -38,9 +38,9 @@ class VideoController extends Controller
             'category_id' => request('category'),
         ]);
 
-        $video->logo_url = 'http://test1.a2-lab.com/pubic/images/logo/' . $video->id . 'l.' . $extension_logo;
-        $video->background_url = 'http://test1.a2-lab.com/public/images/background/' . $video->id . 'b.' . $extension_background;
-        $video->video_url = 'http://test1.a2-lab.com/public/videos/' . $video->id . 'v.' . $extension_video;
+        $video->logo_url = 'http://test1.a2-lab.com/images/logo/' . $video->id . 'l.' . $extension_logo;
+        $video->background_url = 'http://test1.a2-lab.com/images/background/' . $video->id . 'b.' . $extension_background;
+        $video->video_url = 'http://test1.a2-lab.com/videos/' . $video->id . 'v.' . $extension_video;
         $video->save();
 
         $file_logo = Input::file('logo_url');
