@@ -21,7 +21,7 @@ Route::resource('category', 'CategoryController');
 
 // ================= Videos =================== //
 
-Route::get('vid', 'VideoController@videoAPI');
+Route::get('video/all', 'VideoController@videoAPI');
 Route::resource('video', 'VideoController');
 
 // ================ Authentication ================ //

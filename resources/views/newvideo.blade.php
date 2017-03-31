@@ -1,7 +1,7 @@
 @extends('app')
 
 @section('content')
-    {!! Form::open(array('url' => '/newvideo', 'files' => true)) !!}
+    {!! Form::open(array('url' => '/video', 'files' => true)) !!}
     {!! Form::label('video name', 'Video name: ') !!}
     {!! Form::text('video_name') !!}<br>
     {!! Form::label('description', 'Description: ') !!}<br>
