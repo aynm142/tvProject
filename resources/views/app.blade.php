@@ -34,8 +34,8 @@
             @if (Auth::check())
                 <ul>
                     <li>{{ Html::link('/category/create', 'Add Category') }}</li>
-                    <li>{{ Html::link('newvideo', 'Add Video') }}</li>
-                    <li>{{ Html::link('/category/showAll', 'Show Categories') }}</li>
+                    <li>{{ Html::link('video/create', 'Add Video') }}</li>
+                    <li>{{ Html::link('/category/show', 'Show Categories') }}</li>
                 </ul>
             @endif
         </div>

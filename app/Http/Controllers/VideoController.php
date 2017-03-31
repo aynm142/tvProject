@@ -11,15 +11,37 @@ use App\Category;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\DB;
 
+
 class VideoController extends Controller
 {
-    public function createVideo()
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        //
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
     {
         $categories_list = Category::pluck('category_name', 'id');
         return view('newvideo', compact('categories_list'));
     }
 
-    public function storeVideo()
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store()
     {
         $this->validate(request(), [
             'logo_url' => 'required|image|mimes:jpeg,bmp,png,jpg',
@@ -64,7 +86,52 @@ class VideoController extends Controller
         return redirect('/');
     }
 
-    public function videoAPI()
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        //
+    }
+
+    public function videoApi()
     {
         return Video::all();
     }
