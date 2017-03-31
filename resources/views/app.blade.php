@@ -23,7 +23,7 @@
                 <p style="text-align: right">Welcome, {{  Auth::user()->name }}</p>
                 {{ Html::link('logout', 'Logout') }}
             @else
-                {{ Html::link('register', 'Register') }} {{-- <a href="/tvProject/public/register">Register</a> --}}
+                {{ Html::link('register', 'Register') }}
                 {{ Html::link('login', 'Login') }}
             @endif
         </div>
@@ -33,9 +33,9 @@
         <div id="left-menu">
             @if (Auth::check())
                 <ul>
-                    <li>{{ Html::link('/category/new', 'Add Category') }}</li>
+                    <li>{{ Html::link('/category/create', 'Add Category') }}</li>
                     <li>{{ Html::link('newvideo', 'Add Video') }}</li>
-                    <li>{{ Html::link('/category/show', 'Show Categories') }}</li>
+                    <li>{{ Html::link('/category/showAll', 'Show Categories') }}</li>
                 </ul>
             @endif
         </div>

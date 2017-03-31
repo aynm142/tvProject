@@ -15,13 +15,16 @@ Route::get('/', 'TvController@index');
 
 // ================ Categories ================= //
 
-Route::get('/category/new', ['middleware' => 'auth', 'uses' => 'CategoryController@create']);
-Route::get('/category/new', 'CategoryController@create');
-Route::post('/category/new', 'CategoryController@store');
-Route::get('/category/show', 'CategoryController@showAll');
 Route::get('/category/api', 'CategoryController@api');
-Route::get('/category/remove', 'CategoryController@destroy');
-Route::get('/category/{id}', 'CategoryController@show');
+Route::get('/category/show', 'CategoryController@showAll');
+Route::resource('category', 'CategoryController');
+//Route::get('/category/new', ['middleware' => 'auth', 'uses' => 'CategoryController@create']);
+//Route::get('/category/new', 'CategoryController@create');
+//Route::post('/category/new', 'CategoryController@store');
+//Route::get('/category/show', 'CategoryController@showAll');
+//Route::get('/category/api', 'CategoryController@api');
+//Route::get('/category/remove', 'CategoryController@destroy');
+//Route::get('/category/{id}', 'CategoryController@show');
 
 // ================= Videos =================== //
 
