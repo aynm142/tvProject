@@ -38,7 +38,7 @@ class CategoryController extends Controller
      * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateCategoryRequest $request)
     {
         Category::create($request->all());
         return redirect('/');
@@ -53,8 +53,8 @@ class CategoryController extends Controller
     public function show($id)
     {
         $videos = Video::where('category_id', $id)->get();
-        if (empty($videos)) {
-            return redirect('/');
+        if (is_null($videos)) {
+            abort(404);
         }
         return $videos;
     }

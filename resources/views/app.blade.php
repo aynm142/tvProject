@@ -20,11 +20,11 @@
             <a href="/">Home page</a>
         </div><div id="accManager">
             @if (Auth::check())
-                <p style="text-align: right">Welcome, {{  Auth::user()->name }}</p>
-                {{ Html::link('logout', 'Logout') }}
+                <p style="text-align: right;">Welcome, {{  Auth::user()->name }}</p>
+                <a href="http://localhost/tvProject/public/logout">Logout</a>
             @else
-                {{ Html::link('register', 'Register') }}
-                {{ Html::link('login', 'Login') }}
+                <a href="http://localhost/tvProject/public/register">Register</a>
+                <a href="http://localhost/tvProject/public/login">Login</a>
             @endif
         </div>
     </header>
@@ -33,9 +33,9 @@
         <div id="left-menu">
             @if (Auth::check())
                 <ul>
-                    <li>{{ Html::link('/category/create', 'Add Category') }}</li>
-                    <li>{{ Html::link('video/create', 'Add Video') }}</li>
-                    <li>{{ Html::link('/category/show', 'Show Categories') }}</li>
+                    <li><a href="http://localhost/tvProject/public/category/create">Add Category</a></li>
+                    <li><a href="http://localhost/tvProject/public/video/create">Add Video</a></li>
+                    <li><a href="http://localhost/tvProject/public/category/show">Show Categories</a></li>
                 </ul>
             @endif
         </div>

@@ -1,26 +1,27 @@
 @extends('app')
 
 @section('content')
-    {!! Form::open(array('url' => '/video', 'files' => true)) !!}
-    {!! Form::label('video name', 'Video name: ') !!}
-    {!! Form::text('video_name') !!}<br>
-    {!! Form::label('description', 'Description: ') !!}<br>
-    {!! Form::textarea('description') !!}}<br>
-    {{ Form::select('category', $categories_list) }}
-    {!! Form::label('logo_url', 'Logo image') !!}
-    <input type="file" name="logo_url" id="logo_url">
-    {!! Form::label('background_url', 'Background image') !!}
-    <input type="file" name="background_url" id="background_url">
-    {!! Form::label('video_url', 'Video: ') !!}
-    <input type="file" name="video_url" id="background_url"><br>
-    {!! Form::submit('Add new video') !!}
-    {!! Form::close() !!}
-
-    @if ($errors->any())
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
+    <form method="POST" action="http://localhost/tvProject/public/video" accept-charset="UTF-8"
+          enctype="multipart/form-data">
+        {!! csrf_field() !!}
+        <label for="video_name">Video name: </label>
+        <input name="video_name" type="text" id="video_name"><br>
+        <label for="description">Description: </label><br>
+        <textarea name="description" id="description">Enter description here...</textarea><br><br>
+        <label for="logo_url">Logo image: </label>
+        <input type="file" name="logo_url" id="logo_url"><br>
+        <label for="background_url">Background image: </label>
+        <input type="file" name="background_url" id="background_url"><br>
+        <label for="video_url">Video: </label>
+        <input type="file" name="video_url" id="background_url"><br>
+        <label for="category">Select category: </label>
+        <select name="category" id="category">
+            @foreach ($categories_list as $category_id => $category_name)
+                <option value="{{ $category_id }}">{{ $category_name }}</option>
             @endforeach
-        </ul>
-    @endif
+        </select><br><br>
+        <input type="submit" value="Add new video">
+    </form>
+
+    @include('layouts.errors')
 @stop

@@ -1,19 +1,13 @@
 @extends('app')
 
 @section('content')
-    {!! Form::open(['url' => '/category']) !!}
-    {!! Form::hidden('user_id', 1) !!}
-    {!! Form::label('category_name', 'Category name: ') !!}
-    {!! Form::text('category_name') !!}
-    <br>
-    {!! Form::submit('Add new category') !!}
-    {!! Form::close() !!}
+    <form method="POST" action="http://localhost/tvProject/public/category" accept-charset="UTF-8">
+        {!! csrf_field() !!}
+        <input name="user_id" type="hidden" value="1">
+        <label for="category_name">Category name: </label>
+        <input name="category_name" type="text" id="category_name"><br>
+        <input type="submit" value="Add new category">
+    </form>
 
-    @if ($errors->any())
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    @endif
+    @include('layouts.errors')
 @stop

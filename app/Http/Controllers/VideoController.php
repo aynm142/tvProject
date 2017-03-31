@@ -94,7 +94,11 @@ class VideoController extends Controller
      */
     public function show($id)
     {
-        //
+        $video = Video::find($id);
+        if ($video === null) {
+            dd('Nothing');
+        }
+        return $video;
     }
 
     /**
@@ -128,7 +132,7 @@ class VideoController extends Controller
      */
     public function destroy($id)
     {
-        //
+
     }
 
     public function videoApi()
