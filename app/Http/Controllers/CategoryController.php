@@ -27,6 +27,9 @@ class CategoryController extends Controller
     public function show($id)
     {
         $videos = Video::where('category_id', $id)->get();
+        if (empty($videos)) {
+            return redirect('/');
+        }
         return $videos;
     }
 

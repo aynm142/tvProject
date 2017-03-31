@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UploadImageRequest;
 use Illuminate\Http\Request;
 use App\Http\Requests\CreateCategoryRequest;
 use App\User;
@@ -20,6 +21,11 @@ class VideoController extends Controller
 
     public function storeVideo()
     {
+        $this->validate(request(), [
+            'logo_url' => 'required|image|mimes:jpeg,bmp,png,jpg',
+            'background_url' => 'required|image|mimes:jpeg,bmp,png,jpg',
+            'video_url' => 'required|mimetypes:video/mp4',
+        ]);
         $name_logo = Input::file('logo_url')->getClientOriginalName();
         $extension_logo = Input::file('logo_url')->getClientOriginalExtension();
 

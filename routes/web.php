@@ -15,10 +15,11 @@ Route::get('/', 'TvController@index');
 
 // ================ Categories ================= //
 
+Route::get('/category/new', ['middleware' => 'auth', 'uses' => 'CategoryController@create']);
 Route::get('/category/new', 'CategoryController@create');
 Route::post('/category/new', 'CategoryController@store');
 Route::get('/category/show', 'CategoryController@showAll');
-Route::get('/category/get', 'CategoryController@api');
+Route::get('/category/api', 'CategoryController@api');
 Route::get('/category/remove', 'CategoryController@destroy');
 Route::get('/category/{id}', 'CategoryController@show');
 
@@ -30,11 +31,16 @@ Route::get('vid', 'VideoController@videoAPI');
 
 // ================ Authentication ================ //
 
-Route::get('register', 'RegistrationController@create');
-Route::post('register', 'RegistrationController@store');
+Route::get('register', 'Auth\RegisterController@create');
+Route::post('register', 'Auth\RegisterController@store');
 
-Route::get('login', 'SessionsController@create');
-Route::post('login', 'SessionsController@store');
+Route::get('login', 'Auth\LoginController@create');
+Route::post('login', 'Auth\LoginController@store');
 
-Route::get('logout', 'SessionsController@destroy');
+//Route::get('logout', 'SessionsController@destroy');
+Route::get('logout', 'Auth\LoginController@logout');
 //Route::get('test', 'TvController@test');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index');
