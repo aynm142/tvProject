@@ -1,47 +1,136 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <title>Document</title>
-    <link href="{!! asset('css/appstyle.css') !!}" media="all" rel="stylesheet" type="text/css"/>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>VIS TV :: Dashboard</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="{{ asset('admin/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+
+    <!-- MetisMenu CSS -->
+    <link href="{{ asset('admin/vendor/metisMenu/metisMenu.min.css') }}" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="{{ asset('admin/css/admin.css') }}" rel="stylesheet">
+
+    <!-- Morris Charts CSS -->
+    <link href="{{ asset('admin/vendor/morrisjs/morris.css') }}" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="{{ asset('admin/vendor/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
 </head>
 <body>
 
-<div id="main-content">
+    <div id="wrapper">
 
-    <header>
-        <div id="logo-div">
-            {{--<img src="{!! asset('images/logo.png') !!}" alt="logo">--}}
-            <a href="/">Home page</a>
-        </div><div id="accManager">
-            @if (Auth::check())
-                <p style="text-align: right;">Welcome, {{  Auth::user()->name }}</p>
-                <a href="http://localhost/tvProject/public/logout">Logout</a>
-            @else
-                <a href="http://localhost/tvProject/public/register">Register</a>
-                <a href="http://localhost/tvProject/public/login">Login</a>
-            @endif
-        </div>
-    </header>
+        <!-- Navigation -->
+        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Logo</a>
+            </div>
+            <!-- /.navbar-header -->
 
-    <div id="main-container">
-        <div id="left-menu">
-            @if (Auth::check())
-                <ul>
-                    <li><a href="http://localhost/tvProject/public/category/create">Add Category</a></li>
-                    <li><a href="http://localhost/tvProject/public/video/create">Add Video</a></li>
-                    <li><a href="http://localhost/tvProject/public/category/show">Show Categories</a></li>
-                </ul>
-            @endif
+            <ul class="nav navbar-top-links navbar-right">
+                @if(Auth::check())
+                    <li>
+                        <a href="#" target="_blank">
+                            <span class="label label-primary">view my site</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ url('logout') }}"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                    </li>
+                @else
+                    <li>
+                        <a href="{{ url('register') }}">Register</a>
+                    </li>
+                    <li>
+                        <a href="{{ url('login') }}">Login</a>
+                    </li>
+                @endif
+            </ul>
+            <!-- /.navbar-top-links -->
+
+            <div class="navbar-default sidebar" role="navigation">
+                <div class="sidebar-nav navbar-collapse">
+                    @if( Auth::check() )
+                    <ul class="metismenu" id="side-menu">
+                        <li>
+                            <span><i class="fa fa-dashboard fa-fw"></i></span>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="{{ url('/') }}">Dashboard</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                           <span><i class="fa fa-list"></i></span>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="{{ 'category/show' }}">All categories</a>
+                                </li>
+                                <li>
+                                    <a href="{{ 'category/create' }}">Add new categories</a>
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+                        <li>
+                            <span><i class="fa fa-video-camera fa-fw"></i></span>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="#">All Videos</a>
+                                </li>
+                                <li>
+                                    <a href="{{ 'video/create' }}">Add Videos</a>
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+                    </ul>
+                    @endif
+                </div>
+                <!-- /.sidebar-collapse -->
+            </div>
+            <!-- /.navbar-static-side -->
+        </nav>
+
+        <div id="page-wrapper">
+            @yield('content')
         </div>
-        @yield('content')
+        <!-- /#page-wrapper -->
+
     </div>
+    <!-- /#wrapper -->
 
-</div>
+    <!-- jQuery -->
+    <script src="{{ asset('admin/vendor/jquery/jquery.min.js') }}"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="{{ asset('admin/vendor/bootstrap/js/bootstrap.min.js') }}"></script>
+
+    <!-- Metis Menu Plugin JavaScript -->
+    <script src="{{ asset('admin/vendor/metisMenu/metisMenu.min.js') }}"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="{{ asset('admin/js/admin.js') }}"></script>
 </body>
 </html>
