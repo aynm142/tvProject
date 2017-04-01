@@ -1,0 +1,500 @@
+$tile_color_1 = rgba(0, 0, 0, 0.1)
+$tile_color_2 = #ffffff
+$tile_color_3 = #8f8f8f
+$tile_color_4 = #f2f2f2
+$tile_color_5 = #303641
+$tile_color_6 = #f56954
+$tile_color_7 = #00a65a
+$tile_color_8 = #0073b7
+$tile_color_9 = #00c0ef
+$tile_color_10 = #00b29e
+$tile_color_11 = #ba79cb
+$tile_color_12 = #ec3b83
+$tile_color_13 = #ffa812
+$tile_color_14 = #6c541e
+$tile_color_15 = #701c1c
+$tile_background_color = #fafafa
+
+.tile-stats
+	position relative
+	display block
+	background #303641
+	padding 20px
+	margin-bottom 10px
+	overflow hidden
+	-webkit-border-radius 5px
+	-webkit-background-clip padding-box
+	-moz-border-radius 5px
+	-moz-background-clip padding
+	border-radius 5px
+	background-clip padding-box
+	-moz-transition all 300ms ease-in-out
+	-o-transition all 300ms ease-in-out
+	-webkit-transition all 300ms ease-in-out
+	transition all 300ms ease-in-out
+	&hover
+		background #252a32
+	
+	.icon
+		color $tile_color_1
+		position absolute
+		right 5px
+		bottom 5px
+		z-index 1
+		i
+			font-size 100px
+			line-height 0
+			margin 0
+			padding 0
+			vertical-align bottom
+			&before
+				margin 0
+				padding 0
+				line-height 0
+			
+	
+		
+
+	
+	.num
+		position relative
+		color $tile_color_2
+		z-index 5
+		margin 0
+		padding 0
+		font-size 38px
+		font-weight bold
+	
+	h3
+		position relative
+		color $tile_color_2
+		z-index 5
+		margin 0
+		padding 0
+		font-size 18px
+		margin-top 5px
+	
+	p
+		position relative
+		color $tile_color_2
+		z-index 5
+		margin 0
+		padding 0
+		font-size 11px
+		margin-top 5px
+	
+.tile-stats.tile-red
+	background #f56954
+	&hover
+		background #f4543c
+	
+	.icon
+		color $tile_color_1
+	
+	.num
+		color $tile_color_2
+	
+	h3
+		color $tile_color_2
+	
+	p
+		color $tile_color_2
+	
+.tile-stats.tile-green
+	background #00a65a
+	&hover
+		background #008d4c
+	
+	.icon
+		color $tile_color_1
+	
+	.num
+		color $tile_color_2
+	
+	h3
+		color $tile_color_2
+	
+	p
+		color $tile_color_2
+	
+.tile-stats.tile-blue
+	background #0073b7
+	&hover
+		background #00639e
+	
+	.icon
+		color $tile_color_1
+	
+	.num
+		color $tile_color_2
+	
+	h3
+		color $tile_color_2
+	
+	p
+		color $tile_color_2
+	
+.tile-stats.tile-aqua
+	background #00c0ef
+	&hover
+		background #00acd6
+	
+	.icon
+		color $tile_color_1
+	
+	.num
+		color $tile_color_2
+	
+	h3
+		color $tile_color_2
+	
+	p
+		color $tile_color_2
+	
+.tile-stats.tile-cyan
+	background #00b29e
+	&hover
+		background #009987
+	
+	.icon
+		color $tile_color_1
+	
+	.num
+		color $tile_color_2
+	
+	h3
+		color $tile_color_2
+	
+	p
+		color $tile_color_2
+	
+.tile-stats.tile-purple
+	background #ba79cb
+	&hover
+		background #b167c4
+	
+	.icon
+		color $tile_color_1
+	
+	.num
+		color $tile_color_2
+	
+	h3
+		color $tile_color_2
+	
+	p
+		color $tile_color_2
+	
+.tile-stats.tile-pink
+	background #ec3b83
+	&hover
+		background #ea2474
+	
+	.icon
+		color $tile_color_1
+	
+	.num
+		color $tile_color_2
+	
+	h3
+		color $tile_color_2
+	
+	p
+		color $tile_color_2
+	
+.tile-stats.tile-orange
+	background #ffa812
+	&hover
+		background #f89d00
+	
+	.icon
+		color $tile_color_1
+	
+	.num
+		color $tile_color_2
+	
+	h3
+		color $tile_color_2
+	
+	p
+		color $tile_color_2
+	
+.tile-stats.tile-brown
+	background #6c541e
+	&hover
+		background #584418
+	
+	.icon
+		color $tile_color_1
+	
+	.num
+		color $tile_color_2
+	
+	h3
+		color $tile_color_2
+	
+	p
+		color $tile_color_2
+	
+.tile-stats.tile-plum
+	background #701c1c
+	&hover
+		background #5c1717
+	
+	.icon
+		color $tile_color_1
+	
+	.num
+		color $tile_color_2
+	
+	h3
+		color $tile_color_2
+	
+	p
+		color $tile_color_2
+	
+.tile-stats.tile-gray
+	background #f5f5f5
+	&hover
+		background #e8e8e8
+	
+	.icon
+		color $tile_color_1
+	
+	.num
+		color $tile_color_3
+	
+	h3
+		color $tile_color_3
+	
+	p
+		color $tile_color_3
+	
+.tile-stats.tile-white
+	background #ffffff
+	border 1px solid #ebebeb
+	&hover
+		background #f2f2f2
+		background-color $tile_background_color
+	
+	.icon
+		color $tile_color_4
+	
+	.num
+		color $tile_color_5
+	
+	h3
+		color $tile_color_5
+	
+	p
+		color $tile_color_5
+	
+.tile-stats.tile-white-red
+	background #ffffff
+	border 1px solid #ebebeb
+	&hover
+		background #f2f2f2
+		background-color $tile_background_color
+	
+	.icon
+		color $tile_color_4
+	
+	.num
+		color $tile_color_6
+	
+	h3
+		color $tile_color_6
+	
+	p
+		color $tile_color_6
+	
+.tile-stats.tile-white-green
+	background #ffffff
+	border 1px solid #ebebeb
+	&hover
+		background #f2f2f2
+		background-color $tile_background_color
+	
+	.icon
+		color $tile_color_4
+	
+	.num
+		color $tile_color_7
+	
+	h3
+		color $tile_color_7
+	
+	p
+		color $tile_color_7
+	
+.tile-stats.tile-white-blue
+	background #ffffff
+	border 1px solid #ebebeb
+	&hover
+		background #f2f2f2
+		background-color $tile_background_color
+	
+	.icon
+		color $tile_color_4
+	
+	.num
+		color $tile_color_8
+	
+	h3
+		color $tile_color_8
+	
+	p
+		color $tile_color_8
+	
+.tile-stats.tile-white-aqua
+	background #ffffff
+	border 1px solid #ebebeb
+	&hover
+		background #f2f2f2
+		background-color $tile_background_color
+	
+	.icon
+		color $tile_color_4
+	
+	.num
+		color $tile_color_9
+	
+	h3
+		color $tile_color_9
+	
+	p
+		color $tile_color_9
+	
+.tile-stats.tile-white-cyan
+	background #ffffff
+	border 1px solid #ebebeb
+	&hover
+		background #f2f2f2
+		background-color $tile_background_color
+	
+	.icon
+		color $tile_color_4
+	
+	.num
+		color $tile_color_10
+	
+	h3
+		color $tile_color_10
+	
+	p
+		color $tile_color_10
+	
+.tile-stats.tile-white-purple
+	background #ffffff
+	border 1px solid #ebebeb
+	&hover
+		background #f2f2f2
+		background-color $tile_background_color
+	
+	.icon
+		color $tile_color_4
+	
+	.num
+		color $tile_color_11
+	
+	h3
+		color $tile_color_11
+	
+	p
+		color $tile_color_11
+	
+.tile-stats.tile-white-pink
+	background #ffffff
+	border 1px solid #ebebeb
+	&hover
+		background #f2f2f2
+		background-color $tile_background_color
+	
+	.icon
+		color $tile_color_4
+	
+	.num
+		color $tile_color_12
+	
+	h3
+		color $tile_color_12
+	
+	p
+		color $tile_color_12
+	
+.tile-stats.tile-white-orange
+	background #ffffff
+	border 1px solid #ebebeb
+	&hover
+		background #f2f2f2
+		background-color $tile_background_color
+	
+	.icon
+		color $tile_color_4
+	
+	.num
+		color $tile_color_13
+	
+	h3
+		color $tile_color_13
+	
+	p
+		color $tile_color_13
+	
+.tile-stats.tile-white-brown
+	background #ffffff
+	border 1px solid #ebebeb
+	&hover
+		background #f2f2f2
+		background-color $tile_background_color
+	
+	.icon
+		color $tile_color_4
+	
+	.num
+		color $tile_color_14
+	
+	h3
+		color $tile_color_14
+	
+	p
+		color $tile_color_14
+	
+.tile-stats.tile-white-plum
+	background #ffffff
+	border 1px solid #ebebeb
+	&hover
+		background #f2f2f2
+		background-color $tile_background_color
+	
+	.icon
+		color $tile_color_4
+	
+	.num
+		color $tile_color_15
+	
+	h3
+		color $tile_color_15
+	
+	p
+		color $tile_color_15
+	
+.tile-stats.tile-white-gray
+	background #ffffff
+	border 1px solid #ebebeb
+	&hover
+		background #f2f2f2
+		background-color $tile_background_color
+	
+	.icon
+		color $tile_color_4
+	
+	.num
+		color $tile_color_3
+	
+	h3
+		color $tile_color_3
+	
+	p
+		color $tile_color_3
+	
