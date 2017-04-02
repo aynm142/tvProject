@@ -1,5 +1,10 @@
 $(function() {
     $('#side-menu').metisMenu();
+
+    if ( $.fn.summernote && $('.summernote').length ) {
+        $('.summernote').summernote();
+    }
+
 });
 
 //Loads the correct sidebar on window load,
