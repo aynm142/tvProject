@@ -2,7 +2,10 @@
 @section('content')
 	<div class="row">
 	    <div class="col-lg-12">
-	        <h1 class="page-header">All Categories</h1>
+	        <h3 class="page-header">
+	        	<i class="fa fa-list"></i> All Categories
+	        	<a href="{{ url('/category/create') }}" class="btn btn-success"><i class="fa fa-plus"></i> Add new category</a>
+	        </h3>
 	    </div>
 	    <!-- /.col-lg-12 -->
 	</div>
