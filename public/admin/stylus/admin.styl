@@ -1,0 +1,185 @@
+@import "variables"
+@import "mixins"
+
+// Global Styles
+
+body
+	background-color $gray-lightest
+
+
+
+// Wrappers
+
+#wrapper
+	width 100%
+	background $sidebar-bg
+
+
+
+#page-wrapper
+	padding 0 15px
+	min-height 568px
+	background-color white
+
+
+
+@media(min-width: 768px)
+	#page-wrapper
+		position inherit
+		margin 0 0 0 $sidebar-width
+		padding 0 30px
+		border-left 1px solid darken($gray-lightest, 6.5%)
+	
+
+// Navigation
+
+// --Topbar
+
+.navbar-top-links
+	margin-right 0
+
+
+
+.navbar-top-links li
+	display inline-block
+
+
+
+.navbar-top-links lilast-child
+	margin-right 15px
+
+
+
+.navbar-top-links li a
+	padding 15px
+	min-height 50px
+
+
+
+.navbar-top-links .dropdown-menu li
+	display block
+
+
+
+.navbar-top-links .dropdown-menu lilast-child
+	margin-right 0
+
+
+
+.navbar-top-links .dropdown-menu li a
+	padding 3px 20px
+	min-height 0
+
+
+
+.navbar-top-links .dropdown-menu li a div
+	white-space normal
+
+
+
+.navbar-top-links .dropdown-messages,
+.navbar-top-links .dropdown-tasks,
+.navbar-top-links .dropdown-alerts
+	width 310px
+	min-width 0
+
+
+
+.navbar-top-links .dropdown-messages
+	margin-left 5px
+
+
+
+.navbar-top-links .dropdown-tasks
+	margin-left -59px
+
+
+
+.navbar-top-links .dropdown-alerts
+	margin-left -123px
+
+
+
+.navbar-top-links .dropdown-user
+	right 0
+	left auto
+
+
+
+// --Sidebar
+@import "side-menu"
+
+	
+// Buttons
+.btn-outline
+	color inherit
+	background-color transparent
+	transition all .5s
+
+.btn-primary.btn-outline
+	color $brand-primary
+
+.btn-success.btn-outline
+	color $brand-success
+
+.btn-info.btn-outline
+	color $brand-info
+
+.btn-warning.btn-outline
+	color $brand-warning
+
+.btn-danger.btn-outline
+	color $brand-danger
+
+.btn-primary.btn-outline:hover,
+.btn-success.btn-outline:hover,
+.btn-info.btn-outline:hover,
+.btn-warning.btn-outline:hover,
+.btn-danger.btn-outline:hover
+	color white
+
+// Custom Colored Panels
+.huge
+	font-size 40px
+
+.panel-green
+	border-color $brand-success
+	> .panel-heading
+		border-color $brand-success
+		color white
+		background-color $brand-success
+	> a
+		color $brand-success
+		&:hover
+			color darken($brand-success, 15%)
+		
+
+.panel-red
+	border-color $brand-danger
+	> .panel-heading
+		border-color $brand-danger
+		color white
+		background-color $brand-danger
+	
+
+	> a
+		color $brand-danger
+		&:hover
+			color darken($brand-danger, 15%)
+			
+
+
+.panel-yellow
+	border-color $brand-warning
+	> .panel-heading
+		border-color $brand-warning
+		color white
+		background-color $brand-warning
+	> a
+		color $brand-warning
+		&:hover
+			color darken($brand-warning, 15%)
+		
+
+// statistics panel
+@import "tile-stats"
