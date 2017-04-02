@@ -85,10 +85,10 @@
                            <span><i class="fa fa-list"></i></span>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="{{ 'category/show' }}">All categories</a>
+                                    <a href="http://test1.a2-lab.com/category/show' }}">All categories</a>
                                 </li>
                                 <li>
-                                    <a href="{{ 'category/create' }}">Add new categories</a>
+                                    <a href="http://test1.a2-lab.com/category/create">Add new categories</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->

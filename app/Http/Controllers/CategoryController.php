@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
-use App\Http\Requests\CreateCategoryRequest;
+use App\Http\Requests\CategoryRequest;
 use App\User;
 use App\Video;
 use App\Category;
@@ -38,7 +39,7 @@ class CategoryController extends Controller
      * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CreateCategoryRequest $request)
+    public function store(CategoryRequest $request)
     {
         Category::create($request->all());
         return redirect('/');
@@ -52,11 +53,13 @@ class CategoryController extends Controller
      */
     public function show($id)
     {
-        $videos = Video::where('category_id', $id)->get();
-        if (is_null($videos)) {
+        try {
+            Category::findOrFail($id);
+            $videos = Video::where('category_id', $id)->get();
+            return $videos;
+        } catch (ModelNotFoundException $e) {
             abort(404);
         }
-        return $videos;
     }
 
     /**
@@ -67,7 +70,8 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        //
+        $category = Category::findOrFail($id);
+        return view('catedit', compact('category'));
     }
 
     /**
@@ -77,9 +81,11 @@ class CategoryController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(CategoryRequest $request, $id)
     {
-        //
+        $category = Category::findOrFail($id);
+        $category->update($request->all());
+        return redirect('/category/show');
     }
 
     /**
@@ -90,7 +96,10 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $category = Category::findOrFail($id);
+        $category->delete();
+
+        return redirect('/category/show');
     }
 
     public function api()
@@ -100,7 +109,7 @@ class CategoryController extends Controller
 
     public function showAll()
     {
-        $categories = DB::table('categories')->pluck('category_name');
+        $categories = Category::All();
         return view('showcat', compact('categories'));
     }
 }

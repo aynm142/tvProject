@@ -17,10 +17,6 @@ class CreateCategoriesTable extends Migration
             $table->increments('id');
             $table->integer('user_id')->unsigned();
             $table->string('category_name');
-
-            $table->foreign('user_id')
-                  ->references('id')
-                  ->on('users');
         });
     }
 
@@ -31,6 +27,6 @@ class CreateCategoriesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('categories');
+        //
     }
 }

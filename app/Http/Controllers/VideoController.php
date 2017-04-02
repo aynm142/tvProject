@@ -4,11 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\UploadImageRequest;
 use Illuminate\Http\Request;
-use App\Http\Requests\CreateCategoryRequest;
+use App\Http\Requests\CategoryRequest;
 use App\User;
 use App\Video;
 use App\Category;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Support\Facades\DB;
 
 
@@ -94,11 +95,12 @@ class VideoController extends Controller
      */
     public function show($id)
     {
-        $video = Video::find($id);
-        if ($video === null) {
-            dd('Nothing');
+        try {
+            $video = Video::findOrFail($id);
+            return $video;
+        } catch (ModelNotFoundException $e) {
+            abort(404);
         }
-        return $video;
     }
 
     /**

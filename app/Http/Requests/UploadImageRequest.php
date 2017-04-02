@@ -3,8 +3,10 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Input;
 
-class CreateCategoryRequest extends FormRequest
+
+class UploadImageRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -13,7 +15,7 @@ class CreateCategoryRequest extends FormRequest
      */
     public function authorize()
     {
-        return true;
+        return false;
     }
 
     /**
@@ -24,8 +26,9 @@ class CreateCategoryRequest extends FormRequest
     public function rules()
     {
         return [
-            'category_name' => 'required|unique:categories',
+//            'logo_url' => 'required|image|mimes:jpeg,bmp,png,jpg',
+//            'background_url' => 'required|image|mimes:jpeg,bmp,png,jpg',
+//            'video_url' => 'required|mimetypes:video/mp4',
         ];
     }
 }
-
