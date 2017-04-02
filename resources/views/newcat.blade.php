@@ -10,6 +10,8 @@
 	    <!-- /.col-lg-12 -->
 	</div>
 
+	@include('layouts.errors', ['submitButton' => 'Add new category'])
+
 	<div class="row">
 		<div class="col-lg-12">
 			<form method="POST" action="http://test1.a2-lab.com/category" accept-charset="UTF-8">
@@ -27,7 +29,5 @@
 			</form>
 		</div>
 	</div>
-
-    @include('layouts.errors', ['submitButton' => 'Add new category'])
 
 @endsection
