@@ -44,15 +44,8 @@ gulp.task('minify-css', ['stylus'], function() {
         .pipe(gulp.dest('css'))
 });
 
-// Copy JS to dist
-gulp.task('js', function() {
-    return gulp.src(['js/admin.js'])
-        .pipe(header(banner, { pkg: pkg }))
-        .pipe(gulp.dest('js'))
-})
-
 // Minify JS
-gulp.task('minify-js', ['js'], function() {
+gulp.task('minify-js', function() {
     return gulp.src('js/admin.js')
         .pipe(uglify())
         .pipe(header(banner, { pkg: pkg }))
@@ -105,7 +98,7 @@ gulp.task('default', ['minify-css', 'minify-js', 'copy']);
 
 
 // Dev task
-gulp.task('dev', ['stylus', 'minify-css', 'js', 'minify-js'], function() {
+gulp.task('dev', ['stylus', 'minify-css', 'minify-js'], function() {
     gulp.watch('stylus/*.styl', ['stylus']);
     gulp.watch('css/*.css', ['minify-css']);
     gulp.watch('js/*.js', ['minify-js']);    
