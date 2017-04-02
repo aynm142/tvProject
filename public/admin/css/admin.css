@@ -1,6 +1,9 @@
 /*!
  * VIS TV v0.0.1
  */
+.m-r-5 {
+  margin-right: 5px;
+}
 body {
   background-color: #f8f8f8;
 }
@@ -200,6 +203,24 @@ body {
 }
 .panel-yellow > a:hover {
   color: #ec9922;
+}
+.panel-categories .panel-body {
+  padding: 5px 10px;
+}
+.panel-categories .panel-body .list-group {
+  margin: 0;
+}
+.panel-categories .panel-body .list-group-item {
+  margin-bottom: 5px;
+  border-radius: 0;
+}
+.panel-categories .panel-body .list-group-item .action-buttons {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  padding: 5px;
+  background: #ddd;
 }
 .tile-stats {
   position: relative;

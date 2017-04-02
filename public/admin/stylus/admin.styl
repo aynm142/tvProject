@@ -109,77 +109,8 @@ body
 // --Sidebar
 @import "side-menu"
 
-	
-// Buttons
-.btn-outline
-	color inherit
-	background-color transparent
-	transition all .5s
 
-.btn-primary.btn-outline
-	color $brand-primary
-
-.btn-success.btn-outline
-	color $brand-success
-
-.btn-info.btn-outline
-	color $brand-info
-
-.btn-warning.btn-outline
-	color $brand-warning
-
-.btn-danger.btn-outline
-	color $brand-danger
-
-.btn-primary.btn-outline:hover,
-.btn-success.btn-outline:hover,
-.btn-info.btn-outline:hover,
-.btn-warning.btn-outline:hover,
-.btn-danger.btn-outline:hover
-	color white
-
-// Custom Colored Panels
-.huge
-	font-size 40px
-
-.panel-green
-	border-color $brand-success
-	> .panel-heading
-		border-color $brand-success
-		color white
-		background-color $brand-success
-	> a
-		color $brand-success
-		&:hover
-			color darken($brand-success, 15%)
-		
-
-.panel-red
-	border-color $brand-danger
-	> .panel-heading
-		border-color $brand-danger
-		color white
-		background-color $brand-danger
-	
-
-	> a
-		color $brand-danger
-		&:hover
-			color darken($brand-danger, 15%)
-			
-
-
-.panel-yellow
-	border-color $brand-warning
-	> .panel-heading
-		border-color $brand-warning
-		color white
-		background-color $brand-warning
-	> a
-		color $brand-warning
-		&:hover
-			color darken($brand-warning, 15%)
-		
+@import "contents"
 
 // statistics panel
 @import "tile-stats"
