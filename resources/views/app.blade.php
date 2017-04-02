@@ -56,14 +56,14 @@
                         </a>
                     </li>
                     <li>
-                        <a href="{{ url('logout') }}"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                        <a href="http://test1.a2-lab.com/logout"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
                     </li>
                 @else
                     <li>
-                        <a href="{{ url('register') }}">Register</a>
+                        <a href="http://test1.a2-lab.com/register">Register</a>
                     </li>
                     <li>
-                        <a href="{{ url('login') }}">Login</a>
+                        <a href="http://test1.a2-lab.com/login">Login</a>
                     </li>
                 @endif
             </ul>
@@ -77,7 +77,7 @@
                             <span><i class="fa fa-dashboard fa-fw"></i></span>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="{{ url('/') }}">Dashboard</a>
+                                    <a href="http://test1.a2-lab.com/">Dashboard</a>
                                 </li>
                             </ul>
                         </li>
@@ -85,7 +85,7 @@
                            <span><i class="fa fa-list"></i></span>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="http://test1.a2-lab.com/category/show' }}">All categories</a>
+                                    <a href="http://test1.a2-lab.com/category/show">All categories</a>
                                 </li>
                                 <li>
                                     <a href="http://test1.a2-lab.com/category/create">Add new categories</a>
