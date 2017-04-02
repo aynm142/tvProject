@@ -70,11 +70,14 @@
             <!-- /.navbar-top-links -->
 
             <div class="navbar-default sidebar" role="navigation">
-                <div class="sidebar-nav navbar-collapse">
+                <div class="sidebar-nav navbar-collapse collapse">
                     @if( Auth::check() )
                     <ul class="metismenu" id="side-menu">
                         <li>
-                            <span><i class="fa fa-dashboard fa-fw"></i></span>
+                            <a href="#">
+                                <i class="fa fa-dashboard fa-fw"></i>
+                                <span class="visible-xs-inline">Dashboard</span>
+                            </a>
                             <ul class="nav nav-second-level">
                                 <li>
                                     <a href="http://test1.a2-lab.com/">Dashboard</a>
@@ -82,7 +85,10 @@
                             </ul>
                         </li>
                         <li>
-                           <span><i class="fa fa-list"></i></span>
+                           <a href="#">
+                                <i class="fa fa-list"></i>
+                                <span class="visible-xs-inline">Categories</span>
+                            </a>
                             <ul class="nav nav-second-level">
                                 <li>
                                     <a href="http://test1.a2-lab.com/category/show">All categories</a>
@@ -94,7 +100,10 @@
                             <!-- /.nav-second-level -->
                         </li>
                         <li>
-                            <span><i class="fa fa-video-camera fa-fw"></i></span>
+                            <a href="#">
+                                <i class="fa fa-video-camera fa-fw"></i>
+                                <span class="visible-xs-inline">Videos</span>
+                            </a>
                             <ul class="nav nav-second-level">
                                 <li>
                                     <a href="#">All Videos</a>
