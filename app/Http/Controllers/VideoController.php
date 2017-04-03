@@ -144,6 +144,12 @@ class VideoController extends Controller
     public function destroy($id)
     {
         $video = Video::findOrFail($id);
+        foreach ($video->getVideoUrl() as $vid) {
+            $arr = explode('/public', $vid);
+            if (isset($arr[1])) {
+                \File::delete(public_path($arr[1]));
+            }
+        }
         $video->delete();
 
         return redirect('/video/showAll');
