@@ -1,33 +1,5 @@
 @extends('app')
 
-@push('styles')
-<!-- include summernote css -->
-<link href="{{ asset('admin/vendor/summernote/summernote.css') }}" rel="stylesheet">
-@endpush
-
-@push('scripts')
-<!-- include summernote js -->
-<script src="{{ asset('admin/vendor/summernote/summernote.js') }}"></script>
-
-<script type="text/javascript">
-	;(function($) {
-
-		$('#add_new_field').click(function(e) {
-			e.preventDefault();
-			console.log( $(e.target).parents('.form-group') );
-
-			var form_group = $('<div class="form-group input-group"><input required="required" type="file" class="form-control" name="video_url[]"><span class="input-group-btn"><button class="btn btn-danger remove-input" type="button"><i class="fa fa-remove"></i></button></span></div>');
-			form_group.insertBefore($(e.target).parents('.form-group'));
-		});
-
-		$(document).on('click', '.remove-input', function() {
-			$(this).parents('.input-group').remove();
-		});
-
-	})(jQuery);
-</script>
-@endpush
-
 @section('content')
 	<div class="row">
 		<div class="col-lg-12">
@@ -72,7 +44,7 @@
 						<div class="row">
 							<div class="col-lg-12">
 								<div class="form-group">
-									<textarea name="description" class="form-control summernote">Enter description here...</textarea>
+									<textarea name="description" class="form-control">Enter description here...</textarea>
 								</div>
 							</div>
 						</div>
