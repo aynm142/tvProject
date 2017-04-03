@@ -47,8 +47,11 @@ class VideoController extends Controller
         $this->validate(request(), [
             'logo_url' => 'required|image|mimes:jpeg,bmp,png,jpg',
             'background_url' => 'required|image|mimes:jpeg,bmp,png,jpg',
-//            'video_url' => 'required|mimetypes:video/mp4',
+            'video_url.*' => 'required|mimetypes:video/mp4',
         ]);
+
+        die('xsxsx');
+
         $name_logo = Input::file('logo_url')->getClientOriginalName();
         $extension_logo = Input::file('logo_url')->getClientOriginalExtension();
 

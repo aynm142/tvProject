@@ -119,7 +119,7 @@
 							<div class="col-lg-12">
 								<div class="form-group">
 									<p class="help-block">You can upload some video files</p>
-									<input required="required" type="file" class="form-control" name="video_url">
+									<input required="required" type="file" class="form-control" name="video_url[]">
 								</div>
 								<div class="form-group">
 									<button class="btn btn-primary" id="add_new_field" type="button">
