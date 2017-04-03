@@ -58,14 +58,14 @@
                         </a>
                     </li>
                     <li>
-                        <a href="http://test1.a2-lab.com/logout"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                        <a href="{{ route('logout') }}"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
                     </li>
                 @else
                     <li>
-                        <a href="http://test1.a2-lab.com/register">Register</a>
+                        <a href="{{ route('register') }}">Register</a>
                     </li>
                     <li>
-                        <a href="http://test1.a2-lab.com/login">Login</a>
+                        <a href="{{ route('login') }}">Login</a>
                     </li>
                 @endif
             </ul>
@@ -82,7 +82,7 @@
                             </a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="http://test1.a2-lab.com/">Dashboard</a>
+                                    <a href="{{ action('TvController@index') }}">Dashboard</a>
                                 </li>
                             </ul>
                         </li>
@@ -93,10 +93,10 @@
                             </a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="http://test1.a2-lab.com/category/show">All categories</a>
+                                    <a href="{{ action('CategoryController@showAll') }}">All categories</a>
                                 </li>
                                 <li>
-                                    <a href="http://test1.a2-lab.com/category/create">Add new categories</a>
+                                    <a href="{{ route('category.create') }}">Add new categories</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
@@ -108,10 +108,10 @@
                             </a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="#">All Videos</a>
+                                    <a href="{{ action('VideoController@showAll') }}">All Videos</a>
                                 </li>
                                 <li>
-                                    <a href="{{ 'video/create' }}">Add Videos</a>
+                                    <a href="{{ route('video.create') }}">Add Videos</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->

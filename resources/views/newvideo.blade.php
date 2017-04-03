@@ -41,10 +41,7 @@
 	@include('layouts.errors')
 
 	<div class="row">
-		<form method="POST" action="{{ url('/video') }}" accept-charset="UTF-8"
-		  enctype="multipart/form-data">
-			{!! csrf_field() !!}
-
+			{!! Form::open(['method' => 'POST', 'url' => '/video', 'files' => true]) !!}
 			<div class="col-lg-12">
 				<div class="panel panel-default">
 					<div class="panel-heading">
@@ -96,11 +93,11 @@
 							<div class="col-lg-12">
 								<div class="form-group">
 									<label class="help-block" for="logo_url">Logo image</label>
-									<input required="required" type="file" class="form-control" name="logo_url" id="logo_url">
+									{!! Form::file('logo_url', ['class' => 'form-control']) !!}
 								</div>
 								<div class="form-group">
 									<label class="help-block" for="background_url">Background image</label>
-									<input required="required" type="file" class="form-control" name="background_url" id="background_url">
+									{!! Form::file('background_url', ['class' => 'form-control']) !!}
 								</div>
 							</div>
 						</div>
@@ -122,7 +119,7 @@
 							<div class="col-lg-12">
 								<div class="form-group">
 									<p class="help-block">You can upload some video files</p>
-									<input required="required" type="file" class="form-control" name="video_url[]">
+									<input required="required" type="file" class="form-control" name="video_url">
 								</div>
 								<div class="form-group">
 									<button class="btn btn-primary" id="add_new_field" type="button">
@@ -167,7 +164,7 @@
 			</div>
 
 
-		</form>
+		{!! Form::close() !!}
 	</div>
 
 @endsection

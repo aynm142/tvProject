@@ -108,16 +108,16 @@
         },
         {
             "name": "erusev/parsedown",
-            "version": "1.6.1",
+            "version": "1.6.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/erusev/parsedown.git",
-                "reference": "20ff8bbb57205368b4b42d094642a3e52dac85fb"
+                "reference": "1bf24f7334fe16c88bf9d467863309ceaf285b01"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/erusev/parsedown/zipball/20ff8bbb57205368b4b42d094642a3e52dac85fb",
-                "reference": "20ff8bbb57205368b4b42d094642a3e52dac85fb",
+                "url": "https://api.github.com/repos/erusev/parsedown/zipball/1bf24f7334fe16c88bf9d467863309ceaf285b01",
+                "reference": "1bf24f7334fe16c88bf9d467863309ceaf285b01",
                 "shasum": ""
             },
             "require": {
@@ -146,7 +146,7 @@
                 "markdown",
                 "parser"
             ],
-            "time": "2016-11-02T15:56:58+00:00"
+            "time": "2017-03-29T16:04:15+00:00"
         },
         {
             "name": "jakub-onderka/php-console-color",
@@ -2383,16 +2383,16 @@
         },
         {
             "name": "phpunit/php-code-coverage",
-            "version": "4.0.7",
+            "version": "4.0.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/php-code-coverage.git",
-                "reference": "09e2277d14ea467e5a984010f501343ef29ffc69"
+                "reference": "ef7b2f56815df854e66ceaee8ebe9393ae36a40d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/09e2277d14ea467e5a984010f501343ef29ffc69",
-                "reference": "09e2277d14ea467e5a984010f501343ef29ffc69",
+                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/ef7b2f56815df854e66ceaee8ebe9393ae36a40d",
+                "reference": "ef7b2f56815df854e66ceaee8ebe9393ae36a40d",
                 "shasum": ""
             },
             "require": {
@@ -2442,7 +2442,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2017-03-01T09:12:17+00:00"
+            "time": "2017-04-02T07:44:40+00:00"
         },
         {
             "name": "phpunit/php-file-iterator",
@@ -2632,16 +2632,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "5.7.17",
+            "version": "5.7.18",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "68752b665d3875f9a38a357e3ecb35c79f8673bf"
+                "reference": "c6884c0d4b8a7277de7ae3c9e597aff138c6365f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/68752b665d3875f9a38a357e3ecb35c79f8673bf",
-                "reference": "68752b665d3875f9a38a357e3ecb35c79f8673bf",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/c6884c0d4b8a7277de7ae3c9e597aff138c6365f",
+                "reference": "c6884c0d4b8a7277de7ae3c9e597aff138c6365f",
                 "shasum": ""
             },
             "require": {
@@ -2710,7 +2710,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2017-03-19T16:52:12+00:00"
+            "time": "2017-04-02T15:44:48+00:00"
         },
         {
             "name": "phpunit/phpunit-mock-objects",

@@ -24,9 +24,7 @@
 
 						        <div class="action-buttons">
 						            <a class="btn btn-sm btn-default pull-left m-r-5" href="{{ URL::to('/category/' . $category->id . '/edit') }}">Edit</a>
-									<form class="pull-left" action="{{ 'category/' . $category->id }}" method="POST">
-										{{ csrf_field() }}
-										<input type="hidden" name="_method" value="DELETE">
+										{!! Form::Open(['method' => 'DELETE', 'url' => '/category/' . $category->id, 'class' => 'pull-left']) !!}
 										<button type="submit" class="btn btn-sm btn-danger">Delete</button>
 									</form>
 						        </div>

@@ -47,7 +47,7 @@ class VideoController extends Controller
         $this->validate(request(), [
             'logo_url' => 'required|image|mimes:jpeg,bmp,png,jpg',
             'background_url' => 'required|image|mimes:jpeg,bmp,png,jpg',
-            'video_url' => 'required|mimetypes:video/mp4',
+//            'video_url' => 'required|mimetypes:video/mp4',
         ]);
         $name_logo = Input::file('logo_url')->getClientOriginalName();
         $extension_logo = Input::file('logo_url')->getClientOriginalExtension();
@@ -67,9 +67,10 @@ class VideoController extends Controller
             'category_id' => request('category'),
         ]);
 
-        $video->logo_url = 'http://test1.a2-lab.com/images/logo/' . $video->id . 'l.' . $extension_logo;
-        $video->background_url = 'http://test1.a2-lab.com/images/background/' . $video->id . 'b.' . $extension_background;
-        $video->video_url = 'http://test1.a2-lab.com/videos/' . $video->id . 'v.' . $extension_video;
+        $video->logo_url = url('images/logo') . '/' .$video->id . 'l.' . $extension_logo;
+        $video->background_url = url('images/background') . '/' . $video->id . 'b.' . $extension_background;
+        $video->video_url = url('videos/') . '/' . $video->id . 'v.' . $extension_video;
+
         $video->save();
 
         $file_logo = Input::file('logo_url');
@@ -134,11 +135,20 @@ class VideoController extends Controller
      */
     public function destroy($id)
     {
+        $video = Video::findOrFail($id);
+        $video->delete();
 
+        return redirect('/video/showAll');
     }
 
     public function videoApi()
     {
         return Video::all();
+    }
+
+    public function showAll()
+    {
+        $videos = Video::All();
+        return view('showvideos', compact('videos'));
     }
 }

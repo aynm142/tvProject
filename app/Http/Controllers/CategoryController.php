@@ -42,7 +42,7 @@ class CategoryController extends Controller
     public function store(CategoryRequest $request)
     {
         Category::create($request->all());
-        return redirect('/');
+        return redirect('/category/show/');
     }
 
     /**

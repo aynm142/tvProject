@@ -14,20 +14,18 @@
 
     <div class="row">
         <div class="col-lg-12">
-            <form method="POST" action="http://test1.a2-lab.com/category/{{ $category->id }}" accept-charset="UTF-8">
-                {!! csrf_field() !!}
-                <input name="_method" type="hidden" value="PATCH">
-                <input name="user_id" type="hidden" value="1">
+            {!! Form::model($category, ['method' => 'PATCH', 'action' => ['CategoryController@update', $category->id]]) !!}
+                <input name="user_id" type="hidden" value="1">  {{-- TEMPORARY!!! --}}
 
                 <div class="form-group input-group">
-                    <input name="category_name" type="text" placeholder="Category name" class="form-control" value="{{ $category->category_name }}">
+                    {!! Form::text('category_name', null, ['class' => 'form-control']) !!}
                     <span class="input-group-btn">
                         <button class="btn btn-default" type="submit">
                             <i class="fa fa-pencil"></i> Edit category
                         </button>
                     </span>
                 </div>
-            </form>
+            {{ Form::close() }}
         </div>
     </div>
 

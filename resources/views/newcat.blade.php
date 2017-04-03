@@ -14,10 +14,8 @@
 
 	<div class="row">
 		<div class="col-lg-12">
-			<form method="POST" action="http://test1.a2-lab.com/category" accept-charset="UTF-8">
-				{!! csrf_field() !!}
-				<input name="user_id" type="hidden" value="1">
-
+			{!! Form::open(['method' => 'post', 'url' => '/category/']) !!}
+				<input name="user_id" type="hidden" value="1"> {{-- TEMPORARY!!! --}}
 				<div class="form-group input-group">
                     <input name="category_name" type="text" placeholder="Category name" class="form-control">
                     <span class="input-group-btn">
