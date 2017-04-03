@@ -15,17 +15,20 @@ Route::get('/', 'TvController@index');
 
 // ================ Categories ================= //
 
-Route::get('/category/api', 'CategoryController@api');
-Route::get('/category/show', 'CategoryController@showAll');
-Route::resource('category', 'CategoryController');
-
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('/category/api', 'CategoryController@api');
+    Route::get('/category/show', 'CategoryController@showAll');
+    Route::resource('category', 'CategoryController', ['except' => ['index']]);
+});
 // ================= Videos =================== //
 
-Route::get('video/showAll', 'VideoController@showAll');
-Route::get('video/all', 'VideoController@videoAPI');
-Route::resource('video', 'VideoController');
-
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('video/showAll', 'VideoController@showAll');
+    Route::get('video/all', 'VideoController@videoAPI');
+    Route::resource('video', 'VideoController', ['except' => ['index']]);
+});
 // ================ Authentication ================ //
+
 
 Route::get('register', 'Auth\RegisterController@create');
 Route::post('register', 'Auth\RegisterController@store');
@@ -38,4 +41,4 @@ Route::get('logout', 'Auth\LoginController@logout');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index');
+//Route::get('/home', 'HomeController@index');
