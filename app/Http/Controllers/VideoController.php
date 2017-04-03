@@ -50,21 +50,31 @@ class VideoController extends Controller
             'video_url.*' => 'required|mimetypes:video/mp4',
         ]);
 
-        die('xsxsx');
-
         $name_logo = Input::file('logo_url')->getClientOriginalName();
         $extension_logo = Input::file('logo_url')->getClientOriginalExtension();
 
         $name_background = Input::file('background_url')->getClientOriginalName();
         $extension_background = Input::file('background_url')->getClientOriginalExtension();
 
-        $name_video = Input::file('video_url')->getClientOriginalName();
-        $extension_video = Input::file('video_url')->getClientOriginalExtension();
+        $videos = request()->video_url;
+        $links = [];
+        if (is_array($videos) && count($videos)) {
+            foreach ($videos as $video) {
+                $extension_video = $video->getClientOriginalExtension();
+
+                $url = url('videos/') . '/' . rand(255, 2155) . uniqid() . 'v.' . $extension_video;
+                $video->move(public_path('videos/'), $url);
+
+                $links[] = $url;
+            }
+        } else {
+            die('some problem');
+        }
 
         $video = Video::create([
             'video_name' => request('video_name'),
             'description' => request('description'),
-            'video_url' => $name_video,
+            'video_url' => serialize($links),
             'logo_url' => $name_logo,
             'background_url' => $name_background,
             'category_id' => request('category'),
@@ -72,9 +82,6 @@ class VideoController extends Controller
 
         $video->logo_url = url('images/logo') . '/' .$video->id . 'l.' . $extension_logo;
         $video->background_url = url('images/background') . '/' . $video->id . 'b.' . $extension_background;
-        $video->video_url = url('videos/') . '/' . $video->id . 'v.' . $extension_video;
-
-        $video->save();
 
         $file_logo = Input::file('logo_url');
         $path_logo = public_path('images/logo/');
@@ -84,9 +91,7 @@ class VideoController extends Controller
         $path_background = public_path('images/background/');
         $file_background->move($path_background, $video->background_url);
 
-        $file_video = Input::file('video_url');
-        $path_video = public_path('videos/');
-        $file_video->move($path_video, $video->video_url);
+        $video->save();
 
         return redirect('/');
     }

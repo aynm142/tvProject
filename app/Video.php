@@ -19,4 +19,9 @@ class Video extends Model
     {
         return $this->belongsTo('App\Category');
     }
+
+    public function getVideoUrl()
+    {
+        return (array) @unserialize($this->video_url);
+    }
 }
