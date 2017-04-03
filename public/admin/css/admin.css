@@ -229,10 +229,27 @@ body {
   margin-bottom: 25px;
 }
 .video__album > .video article {
-  box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.75);
+  box-shadow: 0px 0px 1px 0px rgba(0,0,0,0.75);
 }
 .video__album > .video .video__info {
   padding: 15px;
+}
+.video__album > .video footer {
+  border-top: 1px solid #d9d9d9;
+}
+.video__album > .video footer .footer__buttons {
+  border-left: 1px solid #d9d9d9;
+}
+.video__album > .video footer .footer__buttons .btn.btn-link {
+  color: #8d929a;
+  -webkit-transition: 0.7s;
+  transition: 0.7s;
+}
+.video__album > .video footer .footer__buttons .btn.btn-link:hover {
+  background: #f7f7f7;
+}
+.video__album > .video footer .footer__buttons form {
+  display: inline-block !important;
 }
 .tile-stats {
   position: relative;
