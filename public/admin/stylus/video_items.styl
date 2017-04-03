@@ -2,7 +2,20 @@
 	& > .video
 		margin-bottom 25px
 		& article
-			box-shadow  0px 0px 3px 0px rgba(0,0,0,0.75)
+			box-shadow  0px 0px 1px 0px rgba(0,0,0,0.75)
 		& .video__info
 			padding 15px
+		& footer
+			$border-color = darken(#fff, 15%)
+			
+			border-top 1px solid $border-color
+			& .footer__buttons
+				border-left 1px solid $border-color
+				& .btn.btn-link
+					color #8d929a
+					transition 0.7s
+					&:hover
+						background darken(#fff, 3%)
+				form
+					display inline-block !important
 		

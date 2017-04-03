@@ -13,7 +13,7 @@
 	</div>
 	
 	<div class="row video__album">
-		@foreach([1,2,3,4,5,6] as $v)
+		@foreach( $videos as $video )
 			<div class="col-xs-12 col-sm-6 col-md-4 video">
 				<article>
 					<header>
@@ -22,24 +22,25 @@
 						</a>
 					</header>
 					<section class="video__info">
-						<h4>Video title</h4>
-						<p>Short desc</p>
+						<h4>{{ $video->video_name }}</h4>
+						<p>{{ $video->description }}</p>
 					</section>
-					<footer>links</footer>
+					<footer class="clearfix">
+						<div class="pull-right footer__buttons">
+							<a href="#edit" class="btn btn-link">
+								<i class="fa fa-pencil"></i>
+							</a>
+							
+							{!! Form::Open(['method' => 'DELETE', 'url' => '/video/' . $video->id]) !!}
+					            <button type="submit" class="btn btn-link">
+									<i class="fa fa-trash"></i>
+								</button>
+					        {!! Form::close() !!}
+						</div>
+					</footer>
 				</article>
 			</div>
 		@endforeach
 	</div>
 
-
-    <div class="row">
-    	@foreach($videos as $key => $video)
-	        <video width="320" height="240" controls>
-	            <source src="{{ $video->video_url }}" type="video/mp4">
-	        </video>
-	        {!! Form::Open(['method' => 'DELETE', 'url' => '/video/' . $video->id]) !!}
-	            {!! Form::submit('Delete') !!}
-	        {!! Form::close() !!}
-	    @endforeach
-    </div>
 @endsection
