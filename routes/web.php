@@ -20,6 +20,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/category/show', 'CategoryController@showAll');
     Route::resource('category', 'CategoryController', ['except' => ['index']]);
 });
+
 // ================= Videos =================== //
 
 Route::group(['middleware' => 'auth'], function () {
@@ -27,19 +28,18 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('video/all', 'VideoController@videoAPI');
     Route::resource('video', 'VideoController', ['except' => ['index']]);
 });
+
 // ================ Authentication ================ //
 
 
 Route::get('register', 'Auth\RegisterController@create');
 Route::post('register', 'Auth\RegisterController@store');
 
-//Route::post('login/api', 'Auth\LoginController@api');
+Route::get('login/test', 'Auth\LoginController@test');
+Route::post('login/api', 'Auth\LoginController@api');
 Route::get('login', 'Auth\LoginController@create');
 Route::post('login', 'Auth\LoginController@store');
 
 Route::get('logout', 'Auth\LoginController@logout');
-//Route::get('test', 'TvController@test');
 
 Auth::routes();
-
-//Route::get('/home', 'HomeController@index');

@@ -52,13 +52,25 @@ class CategoryController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
+
     public function show($id)
     {
         try {
             Category::findOrFail($id);
-            $videos = Video::where('category_id', $id)->get();
-            return $videos;
-        } catch (ModelNotFoundException $e) {
+            $category = [];
+            $videos = (Video::where('category_id', $id)->get());
+            foreach ($videos as $video) {
+                if (isset($video)) {
+                    $video->video_url = $video->getVideoUrl();
+                } else {
+                    $video->video_url = [];
+                }
+                $category['videos'][] = $video->toArray();
+            }
+
+            return Response::json($category);
+
+        } catch (\Exception $e) {
             abort(404);
         }
     }
@@ -106,7 +118,7 @@ class CategoryController extends Controller
     public function api()
     {
 
-        $categories =  ['category' => []];
+        $categories = ['category' => []];
 
         foreach (Category::all() as $category) {
             $categories['category'][] = $category->toArray();

@@ -4,6 +4,15 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Http\Request;
+use App\Http\Requests\CategoryRequest;
+use App\User;
+use App\Video;
+use App\Category;
+use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Response;
 
 class LoginController extends Controller
 {
@@ -35,5 +44,11 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest', ['except' => 'logout']);
+    }
+
+    public function api(Request $request)
+    {
+        $data = $request->All();
+        dd($data);
     }
 }
