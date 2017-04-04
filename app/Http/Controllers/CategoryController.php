@@ -10,6 +10,7 @@ use App\Video;
 use App\Category;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Response;
 
 class CategoryController extends Controller
 {
@@ -104,7 +105,14 @@ class CategoryController extends Controller
 
     public function api()
     {
-        return Category::all();
+
+        $categories =  ['category' => []];
+
+        foreach (Category::all() as $category) {
+            $categories['category'][] = $category->toArray();
+        }
+
+        return Response::json($categories);
     }
 
     public function showAll()
