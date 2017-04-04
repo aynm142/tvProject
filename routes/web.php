@@ -33,6 +33,7 @@ Route::group(['middleware' => 'auth'], function () {
 Route::get('register', 'Auth\RegisterController@create');
 Route::post('register', 'Auth\RegisterController@store');
 
+//Route::post('login/api', 'Auth\LoginController@api');
 Route::get('login', 'Auth\LoginController@create');
 Route::post('login', 'Auth\LoginController@store');
 
