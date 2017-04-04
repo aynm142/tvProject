@@ -1,5 +1,21 @@
 @extends('app')
 
+@push('scripts')
+<script type="text/javascript">
+	;(function($) {
+		$('#add_new_field').click(function(e) {
+			e.preventDefault();
+			console.log( $(e.target).parents('.form-group') );
+			var form_group = $('<div class="form-group input-group"><input required="required" type="file" class="form-control" name="video_url[]"><span class="input-group-btn"><button class="btn btn-danger remove-input" type="button"><i class="fa fa-remove"></i></button></span></div>');
+			form_group.insertBefore($(e.target).parents('.form-group'));
+		});
+		$(document).on('click', '.remove-input', function() {
+			$(this).parents('.input-group').remove();
+		});
+	})(jQuery);
+</script>
+@endpush
+
 @section('content')
 	<div class="row">
 		<div class="col-lg-12">
