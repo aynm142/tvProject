@@ -4,15 +4,8 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
-use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
-use App\Http\Requests\CategoryRequest;
 use App\User;
-use App\Video;
-use App\Category;
-use Illuminate\Support\Facades\Input;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Response;
 
 class LoginController extends Controller
 {
@@ -46,9 +39,46 @@ class LoginController extends Controller
         $this->middleware('guest', ['except' => 'logout']);
     }
 
+    public function test()
+    {
+        dd(1);
+    }
+
     public function api(Request $request)
     {
         $data = $request->All();
-        dd($data);
+        $login = $data['login'];
+        $password = $data['password'];
+        $token = $data['token'];
+        $isLoginTrue = false;
+        $isPasswordTrue = false;
+
+        // Check the login
+        if (User::where('email', $login)->count()) {
+            $isLoginTrue = true;
+        } else {
+            return "Login not found";
+        }
+
+        // check the password
+        $userInfo = User::where('email', $login)->get();
+        if(isset($userInfo[0])) {
+            if (password_verify($password, $userInfo[0]->password)) {
+                $isPasswordTrue = true;
+            } else {
+                return "Wrong password";
+            }
+        }
+
+        // Generate new device token
+        if ($isLoginTrue && $isPasswordTrue) {
+            $userInfo[0]->push_token = $token;
+            $userInfo[0]->save();
+            return "All right";
+        }
+        else {
+            return "Somesing wrong";
+        }
+
     }
 }
