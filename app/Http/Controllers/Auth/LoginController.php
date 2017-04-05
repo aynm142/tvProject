@@ -72,7 +72,7 @@ class LoginController extends Controller
 
         // Generate new device token
         if ($isLoginTrue && $isPasswordTrue) {
-            $userInfo[0]->push_token = $token;
+            $userInfo[0]->device_token = $token;
             $userInfo[0]->save();
             return "All right";
         }

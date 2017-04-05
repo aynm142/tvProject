@@ -115,9 +115,8 @@ class CategoryController extends Controller
         return redirect('/category/show');
     }
 
-    public function api()
+    public function api(Request $request)
     {
-
         $categories = ['category' => []];
 
         foreach (Category::all() as $category) {

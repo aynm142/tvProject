@@ -15,7 +15,7 @@ Route::get('/', 'TvController@index');
 
 // ================ Categories ================= //
 
-Route::group(['middleware' => 'auth'], function () {
+Route::group(['middleware' => ['AuthMiddleware']], function () {
     Route::get('/category/api', 'CategoryController@api');
     Route::get('/category/show', 'CategoryController@showAll');
     Route::resource('category', 'CategoryController', ['except' => ['index']]);
