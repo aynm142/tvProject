@@ -97,22 +97,6 @@ class VideoController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  int $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        try {
-            $video = Video::findOrFail($id);
-            return $video;
-        } catch (ModelNotFoundException $e) {
-            abort(404);
-        }
-    }
-
-    /**
      * Show the form for editing the specified resource.
      *
      * @param  int $id
@@ -154,16 +138,6 @@ class VideoController extends Controller
 
         return redirect('/video/showAll');
     }
-
-    public function videoApi()
-    {
-        $videos = Video::all();
-        foreach ($videos as $video) {
-            $video->video_url = $video->getVideoUrl();
-        }
-        return $videos;
-    }
-
 
     public function showAll()
     {

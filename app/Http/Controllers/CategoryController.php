@@ -47,35 +47,6 @@ class CategoryController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  int $id
-     * @return \Illuminate\Http\Response
-     */
-
-    public function show($id)
-    {
-        try {
-            Category::findOrFail($id);
-            $category = [];
-            $videos = (Video::where('category_id', $id)->get());
-            foreach ($videos as $video) {
-                if (isset($video)) {
-                    $video->video_url = $video->getVideoUrl();
-                } else {
-                    $video->video_url = [];
-                }
-                $category['videos'][] = $video->toArray();
-            }
-
-            return Response::json($category);
-
-        } catch (\Exception $e) {
-            abort(404);
-        }
-    }
-
-    /**
      * Show the form for editing the specified resource.
      *
      * @param  int $id
@@ -113,17 +84,6 @@ class CategoryController extends Controller
         $category->delete();
 
         return redirect('/category/show');
-    }
-
-    public function api(Request $request)
-    {
-        $categories = ['category' => []];
-
-        foreach (Category::all() as $category) {
-            $categories['category'][] = $category->toArray();
-        }
-
-        return Response::json($categories);
     }
 
     public function showAll()

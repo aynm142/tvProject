@@ -21,8 +21,7 @@ class AuthMiddleware
     {
 //        for process request, must exists user
         try {
-//            dd(User::where('device_token', $request->device_token)->firstOrFail());
-            $user = User::where('device_token', $request->device_token)->firstOrFail();
+            $user = User::whereDeviceToken($request->header('authorization'))->firstOrFail();
         } catch (ModelNotFoundException $exception) {
             return response()->json(['error' => 'User not found'], 404);
         }

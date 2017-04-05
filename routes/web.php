@@ -15,8 +15,7 @@ Route::get('/', 'TvController@index');
 
 // ================ Categories ================= //
 
-Route::group(['middleware' => ['AuthMiddleware']], function () {
-    Route::get('/category/api', 'CategoryController@api');
+Route::group(['middleware' => 'auth'], function () {
     Route::get('/category/show', 'CategoryController@showAll');
     Route::resource('category', 'CategoryController', ['except' => ['index']]);
 });
@@ -25,7 +24,6 @@ Route::group(['middleware' => ['AuthMiddleware']], function () {
 
 Route::group(['middleware' => 'auth'], function () {
     Route::get('video/showAll', 'VideoController@showAll');
-    Route::get('video/all', 'VideoController@videoAPI');
     Route::resource('video', 'VideoController', ['except' => ['index']]);
 });
 
