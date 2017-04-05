@@ -104,7 +104,8 @@ class VideoController extends Controller
      */
     public function edit($id)
     {
-        //
+        $video = Video::findOrFail($id);
+        return view('videdit', compact('video'));
     }
 
     /**
@@ -116,7 +117,9 @@ class VideoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $video = Video::findOrFail($id);
+        $video->update($request->all());
+        return redirect('video/showAll');
     }
 
     /**

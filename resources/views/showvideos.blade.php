@@ -27,7 +27,7 @@
 					</section>
 					<footer class="clearfix">
 						<div class="pull-right footer__buttons">
-							<a href="#edit" class="btn btn-link">
+							<a href="{{ URL::to('/video/' . $video->id . '/edit') }}" class="btn btn-link">
 								<i class="fa fa-pencil"></i>
 							</a>
 							
