@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class Video extends Model
 {
@@ -20,7 +21,7 @@ class Video extends Model
         return $this->belongsTo('App\Category');
     }
 
-    public function getVideoUrl()
+    function getVideoUrl()
     {
         return (array) @unserialize($this->video_url);
     }

@@ -52,6 +52,7 @@ class CategoryController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
+
     public function edit($id)
     {
         $category = Category::findOrFail($id);
@@ -88,7 +89,7 @@ class CategoryController extends Controller
 
     public function showAll()
     {
-        $categories = Category::All();
+        $categories = Category::where('category_name', '!=', 'None category')->get();
         return view('showcat', compact('categories'));
     }
 }

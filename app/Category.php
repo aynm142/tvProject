@@ -9,10 +9,11 @@ class Category extends Model
     public $timestamps = false;
     protected $fillable = [
         'category_name',
-        'user_id' //temporary!!
     ];
 
-    protected $hidden = ['user_id'];
+    protected $hidden = [
+        'user_id'
+    ];
 
     public function user()
     {

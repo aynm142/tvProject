@@ -24,11 +24,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'password', 'remember_token', 'push_token',
     ];
 
-    public function categories()
-    {
-        return $this->hasMany('App\Category');
-    }
 }

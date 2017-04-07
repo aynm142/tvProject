@@ -138,7 +138,6 @@ class VideoController extends Controller
             }
         }
         $video->delete();
-
         return redirect('/video/showAll');
     }
 

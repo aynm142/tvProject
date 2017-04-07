@@ -15,9 +15,12 @@ class CreateCategoriesTable extends Migration
     {
         Schema::create('categories', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('user_id')->unsigned();
             $table->string('category_name');
         });
+
+        DB::table('categories')->insert([
+            'category_name' => 'None category'
+        ]);
     }
 
     /**
@@ -25,7 +28,8 @@ class CreateCategoriesTable extends Migration
      *
      * @return void
      */
-    public function down()
+    public
+    function down()
     {
         //
     }
