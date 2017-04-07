@@ -15,8 +15,6 @@
     <div class="row">
         <div class="col-lg-12">
             {!! Form::model($category, ['method' => 'PATCH', 'action' => ['CategoryController@update', $category->id]]) !!}
-                <input name="user_id" type="hidden" value="1">  {{-- TEMPORARY!!! --}}
-
                 <div class="form-group input-group">
                     {!! Form::text('category_name', null, ['class' => 'form-control']) !!}
                     <span class="input-group-btn">

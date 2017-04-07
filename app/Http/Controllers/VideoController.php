@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\UploadImageRequest;
+use function foo\func;
 use Illuminate\Http\Request;
 use App\Http\Requests\CategoryRequest;
 use App\User;
@@ -11,7 +12,6 @@ use App\Category;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Support\Facades\DB;
-
 
 class VideoController extends Controller
 {
@@ -105,7 +105,8 @@ class VideoController extends Controller
     public function edit($id)
     {
         $video = Video::findOrFail($id);
-        return view('videdit', compact('video'));
+        $categories_list = Category::pluck('category_name', 'id');
+        return view('videdit', compact('video', 'categories_list'));
     }
 
     /**
@@ -117,8 +118,26 @@ class VideoController extends Controller
      */
     public function update(Request $request, $id)
     {
+
+        $videoArray = $request->video_url;
+        $links = [];
+        if (is_array($videoArray) && count($videoArray)) {
+            foreach ($videoArray as $video) {
+                $links[] = $video;
+            }
+        }
+
         $video = Video::findOrFail($id);
-        $video->update($request->all());
+        $video->update([
+            'video_name' => request('video_name'),
+            'description' => request('description'),
+            'video_url' => serialize($links),
+            'logo_url' => request('logo_url'),
+            'background_url' => request('background_url'),
+            'category_id' => request('category_id'),
+        ]);
+        $video->save();
+
         return redirect('video/showAll');
     }
 
@@ -128,7 +147,8 @@ class VideoController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public
+    function destroy($id)
     {
         $video = Video::findOrFail($id);
         foreach ($video->getVideoUrl() as $vid) {
@@ -141,7 +161,8 @@ class VideoController extends Controller
         return redirect('/video/showAll');
     }
 
-    public function showAll()
+    public
+    function showAll()
     {
         $videos = Video::All();
         return view('showvideos', compact('videos'));
