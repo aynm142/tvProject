@@ -60,7 +60,7 @@
 						<div class="row">
 							<div class="col-lg-12">
 								<div class="form-group">
-									<textarea name="description" class="form-control">Enter description here...</textarea>
+									<textarea name="description" class="form-control" placeholder="Enter description here..."></textarea>
 								</div>
 							</div>
 						</div>
