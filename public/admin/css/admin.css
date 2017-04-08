@@ -7,6 +7,18 @@
 .m-l-20 {
   margin-left: 20px;
 }
+.text-ellipsis {
+  display: block;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.ov-h {
+  overflow: hidden !important;
+}
+.word-break {
+  word-break: break-all;
+}
 body {
   background-color: #f8f8f8;
 }
