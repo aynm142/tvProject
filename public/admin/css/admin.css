@@ -815,6 +815,9 @@ input[type="file"].form-control {
     width: 65px;
     margin-top: 51px;
   }
+  .sidebar-nav .metismenu .nav.nav-second-level {
+    display: none;
+  }
   .sidebar-nav .metismenu li {
     position: relative;
   }
