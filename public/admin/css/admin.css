@@ -272,7 +272,8 @@ input[type="file"].form-control {
 .video__album > .video footer .footer__buttons form {
   display: inline-block !important;
 }
-.image-preview-input {
+.image-preview-input,
+.file-custom-input {
   position: relative;
   overflow: hidden;
   margin: 0px;
@@ -280,7 +281,8 @@ input[type="file"].form-control {
   background-color: #fff;
   border-color: #ccc;
 }
-.image-preview-input input[type=file] {
+.image-preview-input input[type=file],
+.file-custom-input input[type=file] {
   position: absolute;
   top: 0;
   right: 0;
@@ -291,7 +293,10 @@ input[type="file"].form-control {
   opacity: 0;
   filter: "alpha(opacity=0)";
 }
-.image-preview-input .image-preview-input-title {
+.image-preview-input .image-preview-input-title,
+.file-custom-input .image-preview-input-title,
+.image-preview-input .file-custom-input-input-title,
+.file-custom-input .file-custom-input-input-title {
   margin-left: 2px;
 }
 .tile-stats {

@@ -10,7 +10,7 @@
 		<div class="btn btn-default image-preview-input">
 			<span class="glyphicon glyphicon-folder-open"></span>
 			<span class="image-preview-input-title">Browse</span>
-			<input type="file" required="required" accept="image/jpeg, image/bmp, image/png, image/jpg" name="{{ $name or "" }}"/>
+			<input type="file"@if(isset($is_required) && $is_required) required="required"@endif accept="image/jpeg, image/bmp, image/png, image/jpg" name="{{ $name or "" }}"/>
 		</div>
 	</span>
 </div><!-- /input-group image-preview --> 
