@@ -1,21 +1,5 @@
 @extends('app')
 
-@push('scripts')
-<script type="text/javascript">
-	;(function($) {
-		$('#add_new_field').click(function(e) {
-			e.preventDefault();
-			console.log( $(e.target).parents('.form-group') );
-			var form_group = $('<div class="form-group input-group"><input required="required" type="file" class="form-control" name="video_url[]"><span class="input-group-btn"><button class="btn btn-danger remove-input" type="button"><i class="fa fa-remove"></i></button></span></div>');
-			form_group.insertBefore($(e.target).parents('.form-group'));
-		});
-		$(document).on('click', '.remove-input', function() {
-			$(this).parents('.input-group').remove();
-		});
-	})(jQuery);
-</script>
-@endpush
-
 @section('content')
 	<div class="row">
 		<div class="col-lg-12">
@@ -81,11 +65,19 @@
 							<div class="col-lg-12">
 								<div class="form-group">
 									<label class="help-block" for="logo_url">Logo image</label>
-									{!! Form::file('logo_url', ['class' => 'form-control']) !!}
+									@include('widgets.file-input-preview', [
+											'is_required' => true,
+                                            'name' => 'logo_url'
+                                        ]
+                                    )
 								</div>
 								<div class="form-group">
 									<label class="help-block" for="background_url">Background image</label>
-									{!! Form::file('background_url', ['class' => 'form-control']) !!}
+									@include('widgets.file-input-preview', [
+											'is_required' => true,
+                                            'name' => 'background_url'
+                                        ]
+                                    )
 								</div>
 							</div>
 						</div>
@@ -105,15 +97,13 @@
 					<div class="panel-body">
 						<div class="row">
 							<div class="col-lg-12">
-								<div class="form-group">
-									<p class="help-block">You can upload some video files</p>
-									<input required="required" type="file" class="form-control" name="video_url[]">
-								</div>
-								<div class="form-group">
-									<button class="btn btn-primary" id="add_new_field" type="button">
-										<i class="fa fa-plus"></i> one file
-									</button>
-								</div>
+								@include('widgets.file-input', [
+                                        'name' => 'video_url[]',
+                                        'help_block' => 'You can upload some video files',
+                                        'multiply' => true,
+                                        'is_required' => true,
+                                    ]
+                                )
 							</div>
 						</div>
 						<!-- /.row (nested) -->
