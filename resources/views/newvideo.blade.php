@@ -24,7 +24,7 @@
 							<div class="col-lg-12">
 								<div class="form-group">
 									<p class="help-block">Add the video title in the textbox below:</p>
-									<input required="required" type="text" name="video_name" class="form-control" placeholder="Video title">
+									<input required="required" type="text" name="video_name" class="form-control" placeholder="Video title" value="{{ old('video_name') }}">
 								</div>
 							</div>
 						</div>
@@ -44,7 +44,7 @@
 						<div class="row">
 							<div class="col-lg-12">
 								<div class="form-group">
-									<textarea required="required" name="description" class="form-control" placeholder="Enter description here..."></textarea>
+									<textarea required="required" name="description" class="form-control" placeholder="Enter description here...">{{ old('description') }}</textarea>
 								</div>
 							</div>
 						</div>
@@ -122,9 +122,13 @@
 						<div class="row">
 							<div class="col-lg-12">
 								<div class="form-group">
-	                                <select name="category" class="form-control">
+								    <select name="category" class="form-control">
 										@foreach ($categories_list as $category_id => $category_name)
-											<option value="{{ $category_id }}">{{ $category_name }}</option>
+											<option
+												@if(old('category') == $category_id) selected="selected"@endif
+												value="{{ $category_id }}">
+													{{ $category_name }}
+											</option>
 										@endforeach
 									</select>
 	                            </div>

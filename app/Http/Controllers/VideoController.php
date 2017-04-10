@@ -105,6 +105,24 @@ class VideoController extends Controller
      */
     public function update(Request $request, $id)
     {
+        // validation rules
+        $validation_rules = [];
+        if ( request('logo_url') ) {
+            $validation_rules['logo_url'] = 'required|image|mimes:jpeg,bmp,png,jpg';
+        }
+
+        if ( request('background_url') ) {
+            $validation_rules['background_url'] = 'required|image|mimes:jpeg,bmp,png,jpg';
+        }
+
+        if ( request('video_url') ) {
+            $validation_rules['video_url.*'] = 'required|mimetypes:video/mp4';
+        }
+
+        if (count($validation_rules)) {
+            $this->validate(request(), $validation_rules);
+        }
+
         $video = Video::findOrFail($id);
 
         $old_video_links = (array)$request->old_video;

@@ -261,6 +261,10 @@ input[type="file"].form-control {
 .video__album > .video footer .footer__buttons {
   border-left: 1px solid #d9d9d9;
 }
+.video__album > .video footer .footer__buttons .video-btn__delimetr--right {
+  border-right: 1px solid #d9d9d9;
+  margin-right: -4px;
+}
 .video__album > .video footer .footer__buttons .btn.btn-link {
   color: #8d929a;
   -webkit-transition: 0.7s;
