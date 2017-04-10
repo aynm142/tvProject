@@ -17,8 +17,8 @@ class AdminCheck
     public function handle($request, Closure $next)
     {
         if (Auth::user() != null) {
-            if (Auth::user()->is_admin === 0) {
-                return dd('You are not administrator');
+            if (Auth::user()->is_admin == 0) {
+                return redirect('/logout');
             } else {
                 return $next($request);
             }
