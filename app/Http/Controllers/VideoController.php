@@ -56,7 +56,7 @@ class VideoController extends Controller
         $name_background = Input::file('background_url')->getClientOriginalName();
         $extension_background = Input::file('background_url')->getClientOriginalExtension();
 
-        $links = $this->__saveVideoFiles( request()->video_url );
+        $links = $this->__saveVideoFiles(request()->video_url);
 
         $video = Video::create([
             'video_name' => request('video_name'),
@@ -107,9 +107,9 @@ class VideoController extends Controller
     {
         $video = Video::findOrFail($id);
 
-        $old_video_links = (array) $request->old_video;
+        $old_video_links = (array)$request->old_video;
         foreach ($video->getVideoUrl() as $link) {
-            if ( !in_array($link, $old_video_links) ) {
+            if (!in_array($link, $old_video_links)) {
                 // delete video file
                 $this->__deleteOldFileByLink($link);
             }
@@ -124,21 +124,21 @@ class VideoController extends Controller
         $video->video_url = serialize($links);
 
         // logo image
-        if ( request('logo_url') && $logo_image = Input::file('logo_url') ) {
+        if (request('logo_url') && $logo_image = Input::file('logo_url')) {
             $this->__deleteOldFileByLink($video->logo_url);
 
             // update logo image url
-            $video->logo_url = url('images/logo').'/'.uniqid($video->id.'l_').'.'.$logo_image->getClientOriginalExtension();
+            $video->logo_url = url('images/logo') . '/' . uniqid($video->id . 'l_') . '.' . $logo_image->getClientOriginalExtension();
 
             $logo_image->move(public_path('images/logo/'), $video->logo_url);
         }
 
         // background image
-        if ( request('background_url') && $background_image = Input::file('background_url') ) {
+        if (request('background_url') && $background_image = Input::file('background_url')) {
             $this->__deleteOldFileByLink($video->background_url);
 
             // update background image url
-            $video->background_url = url('images/background').'/'.uniqid($video->id.'b_').'.'.$background_image->getClientOriginalExtension();
+            $video->background_url = url('images/background') . '/' . uniqid($video->id . 'b_') . '.' . $background_image->getClientOriginalExtension();
 
             $background_image->move(public_path('images/background/'), $video->background_url);
         }
@@ -162,8 +162,7 @@ class VideoController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public
-    function destroy($id)
+    public function destroy($id)
     {
         $video = Video::findOrFail($id);
 
@@ -187,9 +186,9 @@ class VideoController extends Controller
     protected function __deleteOldFileByLink($link)
     {
         $old_file = public_path(str_replace(\Request::root(), '', $link));
-        if ( file_exists($old_file) ) {
+        if (file_exists($old_file)) {
             // delete old file
-            \File::delete( $old_file );
+            \File::delete($old_file);
         }
     }
 
@@ -200,7 +199,7 @@ class VideoController extends Controller
             foreach ($files as $video) {
                 $extension_video = $video->getClientOriginalExtension();
 
-                $url = url('videos/'). date("") . '/' . rand(255, 2155) . uniqid() . 'v.' . $extension_video;
+                $url = url('videos/') . date("") . '/' . rand(255, 2155) . uniqid() . 'v.' . $extension_video;
                 $video->move(public_path('videos/'), $url);
 
                 $links[] = $url;

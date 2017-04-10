@@ -22,11 +22,11 @@ class AuthMiddleware
 //        for process request, must exists user
         try {
             $user = User::whereDeviceToken($request->header('authorization'))->firstOrFail();
+            dd($user);
+            return $next($request);
         } catch (ModelNotFoundException $exception) {
             return response()->json(['error' => 'User not found'], 404);
         }
-        $request['user_id'] = $user->id;
 
-        return $next($request);
     }
 }
