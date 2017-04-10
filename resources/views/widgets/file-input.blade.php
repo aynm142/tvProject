@@ -48,6 +48,8 @@
 					$self.find('.file-custom-input-clear').hide();
 					$self.find('.file-custom-input input:file').val("");
 					$self.find(".file-custom-input-title").text("Browse"); 
+
+					$self.find("input[type=hidden].disabled_name").remove();
 				});
 				// Remove event
 				$self.find('.file-custom-input-remove').click(function() {

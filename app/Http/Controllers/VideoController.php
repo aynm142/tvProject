@@ -125,7 +125,15 @@ class VideoController extends Controller
 
         $video = Video::findOrFail($id);
 
-        $old_video_links = (array)$request->old_video;
+        $old_video_links = array_unique((array)$request->old_video);
+
+        // check if have at least one video file
+        if ( !count($old_video_links) && is_null(request()->video_url) ) {
+            return back()
+                ->withErrors(['video_upload' => 'The video must have at least one video file!'])
+                ->withInput();
+        }
+
         foreach ($video->getVideoUrl() as $link) {
             if (!in_array($link, $old_video_links)) {
                 // delete video file
