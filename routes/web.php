@@ -11,18 +11,11 @@
 |
 */
 
-Route::get('/', 'TvController@index');
 
-// ================ Categories ================= //
-
-Route::group(['middleware' => 'auth'], function () {
+Route::group(['middleware' => 'AdminCheck'], function () {
+    Route::get('/', 'TvController@index');
     Route::get('/category/show', 'CategoryController@showAll');
     Route::resource('category', 'CategoryController', ['except' => ['index']]);
-});
-
-// ================= Videos =================== //
-
-Route::group(['middleware' => 'auth'], function () {
     Route::get('video/showAll', 'VideoController@showAll');
     Route::resource('video', 'VideoController', ['except' => ['index']]);
 });

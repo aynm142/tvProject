@@ -57,7 +57,7 @@ class LoginController extends Controller
         if (User::where('email', $login)->count()) {
             $isLoginTrue = true;
         } else {
-            return "Login not found";
+            return response()->json(['response' => 'Login not found'], 404);
         }
 
         // check the password
@@ -66,7 +66,7 @@ class LoginController extends Controller
             if (password_verify($password, $userInfo[0]->password)) {
                 $isPasswordTrue = true;
             } else {
-                return "Wrong password";
+                return response()->json(['response' => 'Wrong password'], 404);
             }
         }
 
@@ -74,11 +74,10 @@ class LoginController extends Controller
         if ($isLoginTrue && $isPasswordTrue) {
             $userInfo[0]->device_token = $token;
             $userInfo[0]->save();
-            return "All right";
+            return response()->json(['response' => 'All right!'], 200);
         }
         else {
-            return "Somesing wrong";
+            return response()->json(['response' => 'Something wrong'], 404);
         }
-
     }
 }
