@@ -3,6 +3,10 @@
 		margin-bottom 25px
 		& article
 			box-shadow  0px 0px 1px 0px rgba(0,0,0,0.75)
+			& img
+				height 210px
+				width 100%
+				object-fit cover
 		& .video__info
 			padding 15px
 		& footer
@@ -19,3 +23,10 @@
 				form
 					display inline-block !important
 		
+@media(max-width: 991px)
+	.video__album > .video img
+		height 150px !important
+		
+@media(min-width: 1400px)
+	.video__album > .video img
+		height 300px !important

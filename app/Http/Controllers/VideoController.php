@@ -56,20 +56,7 @@ class VideoController extends Controller
         $name_background = Input::file('background_url')->getClientOriginalName();
         $extension_background = Input::file('background_url')->getClientOriginalExtension();
 
-        $videos = request()->video_url;
-        $links = [];
-        if (is_array($videos) && count($videos)) {
-            foreach ($videos as $video) {
-                $extension_video = $video->getClientOriginalExtension();
-
-                $url = url('videos/') . '/' . rand(255, 2155) . uniqid() . 'v.' . $extension_video;
-                $video->move(public_path('videos/'), $url);
-
-                $links[] = $url;
-            }
-        } else {
-            die('some problem');
-        }
+        $links = $this->__saveVideoFiles( request()->video_url );
 
         $video = Video::create([
             'video_name' => request('video_name'),
@@ -118,25 +105,53 @@ class VideoController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $video = Video::findOrFail($id);
 
-        $videoArray = $request->video_url;
-        $links = [];
-        if (is_array($videoArray) && count($videoArray)) {
-            foreach ($videoArray as $video) {
-                $links[] = $video;
+        $old_video_links = (array) $request->old_video;
+        foreach ($video->getVideoUrl() as $link) {
+            if ( !in_array($link, $old_video_links) ) {
+                // delete video file
+                $this->__deleteOldFileByLink($link);
             }
         }
 
-        $video = Video::findOrFail($id);
-        $video->update([
-            'video_name' => request('video_name'),
-            'description' => request('description'),
-            'video_url' => serialize($links),
-            'logo_url' => request('logo_url'),
-            'background_url' => request('background_url'),
-            'category_id' => request('category_id'),
-        ]);
-        $video->save();
+        // merge old links with new
+        $links = array_merge($old_video_links, $this->__saveVideoFiles(request()->video_url));
+
+        $video->video_name = request('video_name');
+        $video->description = request('description');
+        $video->category_id = request('category');
+        $video->video_url = serialize($links);
+
+        // logo image
+        if ( request('logo_url') && $logo_image = Input::file('logo_url') ) {
+            $this->__deleteOldFileByLink($video->logo_url);
+
+            // update logo image url
+            $video->logo_url = url('images/logo').'/'.uniqid($video->id.'l_').'.'.$logo_image->getClientOriginalExtension();
+
+            $logo_image->move(public_path('images/logo/'), $video->logo_url);
+        }
+
+        // background image
+        if ( request('background_url') && $background_image = Input::file('background_url') ) {
+            $this->__deleteOldFileByLink($video->background_url);
+
+            // update background image url
+            $video->background_url = url('images/background').'/'.uniqid($video->id.'b_').'.'.$background_image->getClientOriginalExtension();
+
+            $background_image->move(public_path('images/background/'), $video->background_url);
+        }
+
+        try {
+            // try to update video
+            if (!$video->save()) throw new \Exception("Unable to save");
+        } catch (\Exception $e) {
+            // return to back and display error message
+            return back()->withErrors(
+                ['message' => 'Unable to update video.']
+            );
+        }
 
         return redirect('video/showAll');
     }
@@ -151,11 +166,12 @@ class VideoController extends Controller
     function destroy($id)
     {
         $video = Video::findOrFail($id);
+
+        $this->__deleteOldFileByLink($video->logo_url);
+        $this->__deleteOldFileByLink($video->background_url);
+
         foreach ($video->getVideoUrl() as $vid) {
-            $arr = explode('/public', $vid);
-            if (isset($arr[1])) {
-                \File::delete(public_path($arr[1]));
-            }
+            $this->__deleteOldFileByLink($vid);
         }
         $video->delete();
         return redirect('/video/showAll');
@@ -166,5 +182,31 @@ class VideoController extends Controller
     {
         $videos = Video::All();
         return view('showvideos', compact('videos'));
+    }
+
+    protected function __deleteOldFileByLink($link)
+    {
+        $old_file = public_path(str_replace(\Request::root(), '', $link));
+        if ( file_exists($old_file) ) {
+            // delete old file
+            \File::delete( $old_file );
+        }
+    }
+
+    protected function __saveVideoFiles($files)
+    {
+        $links = [];
+        if (is_array($files) && count($files)) {
+            foreach ($files as $video) {
+                $extension_video = $video->getClientOriginalExtension();
+
+                $url = url('videos/'). date("") . '/' . rand(255, 2155) . uniqid() . 'v.' . $extension_video;
+                $video->move(public_path('videos/'), $url);
+
+                $links[] = $url;
+            }
+        }
+
+        return $links;
     }
 }

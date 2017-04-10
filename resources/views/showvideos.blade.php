@@ -18,12 +18,12 @@
 				<article>
 					<header>
 						<a href="#link_to_video_on_main_page" target="_blank">
-							<img class="img-responsive" src="http://app.hellovideoapp.com/content/uploads/images/February2015/how-to-make-a-surf-video.jpg" alt="video image">
+							<img class="img-responsive" src="{{ $video->logo_url }}" alt="video logo">
 						</a>
 					</header>
-					<section class="video__info">
-						<h4>{{ $video->video_name }}</h4>
-						<p>{{ $video->description }}</p>
+					<section class="video__info ov-h">
+						<h4 class="text-ellipsis">{{ $video->video_name }}</h4>
+						<p class="text-ellipsis">{{ $video->description }}</p>
 					</section>
 					<footer class="clearfix">
 						<div class="pull-right footer__buttons">

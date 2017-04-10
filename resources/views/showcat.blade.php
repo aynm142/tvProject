@@ -17,10 +17,10 @@
 	            </div>
 	            <!-- .panel-heading -->
 	            <div class="panel-body">
-	                <ul class="list-group">
+	                <ul class="list-group ov-h">
 	                	@foreach($categories as $key => $category)
-	                		<li class="list-group-item">
-						        {{ $category->category_name }}
+	                		<li class="list-group-item" title="{{ $category->category_name }}">
+						        {{ str_limit($category->category_name, 75) }}
 
 						        <div class="action-buttons">
 						            <a class="btn btn-sm btn-default pull-left m-r-5" href="{{ URL::to('/category/' . $category->id . '/edit') }}">Edit</a>

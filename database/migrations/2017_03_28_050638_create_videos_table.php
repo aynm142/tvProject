@@ -18,7 +18,7 @@ class CreateVideosTable extends Migration
             $table->integer('category_id')->unsigned();
             $table->string('video_name');
             $table->text('description');
-            $table->string('video_url');
+            $table->text('video_url');
             $table->string('logo_url');
             $table->string('background_url');
             $table->timestamps();
