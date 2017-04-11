@@ -17,7 +17,7 @@
 			<div class="col-xs-12 col-sm-6 col-md-4 video">
 				<article>
 					<header>
-						<a href="#link_to_video_on_main_page" target="_blank">
+						<a href="{{ URL::to('/video/' . $video->id . '/edit') }}">
 							<img class="img-responsive" src="{{ $video->logo_url }}" alt="video logo">
 						</a>
 					</header>
