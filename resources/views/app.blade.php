@@ -120,6 +120,21 @@
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
+                        <li>
+                            <a href="#">
+                                <i class="fa fa-ticket fa-fw"></i>
+                                <span class="visible-xs-inline">Promo codes</span>
+                            </a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="#">All</a>
+                                </li>
+                                <li>
+                                    <a href="#">Add new promo code</a>
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
                     </ul>
                     @endif
                 </div>
