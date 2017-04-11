@@ -30,7 +30,7 @@ input[type="file"].form-control {
 }
 #wrapper {
   width: 100%;
-  background: #212529;
+  background: #1c2f36;
 }
 #page-wrapper {
   padding: 0 15px;
@@ -82,6 +82,23 @@ input[type="file"].form-control {
   right: 0;
   left: auto;
 }
+.navbar.navbar-admin-bar {
+  background: #fff;
+}
+.navbar .navbar__logo {
+  display: block;
+  padding: 5px;
+  margin: 0 8px;
+}
+.navbar .navbar__logo .navbar__logo-name {
+  font-size: 1.7em;
+  line-height: 40px;
+  margin-left: 10px;
+}
+.navbar .navbar__logo > img {
+  width: 40px;
+  height: 40px;
+}
 .sidebar a {
   text-decoration: none;
 }
@@ -99,7 +116,7 @@ input[type="file"].form-control {
   padding: 0;
   margin: 0;
   list-style: none;
-  background: #212529;
+  background: #1c2f36;
 }
 .sidebar-nav .metismenu {
   display: -webkit-box;
@@ -137,7 +154,7 @@ input[type="file"].form-control {
   display: block;
   padding: 15px;
   text-align: center;
-  color: #aaabae;
+  color: #dedede;
   outline-width: 0;
   -webkit-transition: all 0.3s ease-out;
   transition: all 0.3s ease-out;
@@ -150,7 +167,7 @@ input[type="file"].form-control {
 .sidebar-nav .metismenu a:active {
   color: #fff;
   text-decoration: none;
-  background: #3e464d;
+  background: #325460;
 }
 .btn-outline {
   color: inherit;

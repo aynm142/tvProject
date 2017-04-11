@@ -38,7 +38,7 @@
     <div id="wrapper">
 
         <!-- Navigation -->
-        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+        <nav class="navbar navbar-default navbar-admin-bar navbar-static-top" role="navigation" style="margin-bottom: 0">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="sr-only">Toggle navigation</span>
@@ -46,7 +46,11 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">Logo</a>
+
+                <a class="navbar__logo clearfix" href="#">
+                    <img src="{{asset('/admin/img/logo.png') }}" class="pull-left" alt="logo">
+                    <span class="navbar__logo-name pull-left visible-xs">VIS TV</span>
+                </a>
             </div>
             <!-- /.navbar-header -->
 
