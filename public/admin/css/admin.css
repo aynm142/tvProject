@@ -177,6 +177,7 @@ input[type="file"].form-control {
 .sidebar-nav .metismenu .nav-second-level a,
 .sidebar-nav .metismenu .nav-second-level span {
   text-align: left !important;
+  padding-bottom: 16px;
 }
 .sidebar-nav .metismenu a:hover,
 .sidebar-nav .metismenu a:active {

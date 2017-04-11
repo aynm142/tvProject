@@ -127,10 +127,34 @@
                             </a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="#">All</a>
+                                    <a href="#">All promo</a>
                                 </li>
                                 <li>
                                     <a href="#">Add new promo code</a>
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="fa fa-users fa-fw"></i>
+                                <span class="visible-xs-inline">Users</span>
+                            </a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="#">All users</a>
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="fa fa-gear fa-fw"></i>
+                                <span class="visible-xs-inline">Settings</span>
+                            </a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="#">Site settings</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
