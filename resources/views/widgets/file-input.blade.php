@@ -8,18 +8,18 @@
 		@endif
 		<span class="input-group-btn">
 			<!-- file-input-clear button -->
-			<button type="button" class="btn btn-default file-custom-input-clear" style="display:none;">
+			<button type="button" class="btn btn-default file-custom-input-clear min-w-100" style="display:none;">
 				<span class="glyphicon glyphicon-remove"></span> Clear
 			</button>
 			<!-- file-custom-input -->
-			<div class="btn btn-default file-custom-input">
+			<div class="btn btn-default file-custom-input min-w-100">
 				<span class="glyphicon glyphicon-folder-open"></span>
 				<span class="file-custom-input-title">Browse</span>
 				<input type="file"@if(isset($is_required) && $is_required) required="required"@endif name="{{ $name or "" }}"/>
 			</div>
 
 			<!-- remove element button -->
-			<button type="button" class="btn btn-danger file-custom-input-remove"@if(!isset($is_remove) || !$is_remove) style="display: none;"@endif>
+			<button type="button" class="btn btn-danger file-custom-input-remove min-w-100"@if(!isset($is_remove) || !$is_remove) style="display: none;"@endif>
 				<span class="glyphicon glyphicon-remove"></span> Remove
 			</button>
 		</span>
