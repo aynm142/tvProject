@@ -2,6 +2,9 @@
 @import "mixins"
 
 // Global Styles
+html, body, #wrapper
+	height 100%
+	width 100%
 
 body
 	background-color $gray-lightest
@@ -14,7 +17,15 @@ input[type="file"].form-control
 
 #wrapper
 	width 100%
-	background $sidebar-bg
+	background #fff
+	&:before
+		content " "
+		position fixed
+		top 0
+		left 0
+		width $sidebar-width
+		height 100%
+		background $sidebar-bg
 
 
 

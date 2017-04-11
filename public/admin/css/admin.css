@@ -22,6 +22,12 @@
 .word-break {
   word-break: break-all;
 }
+html,
+body,
+#wrapper {
+  height: 100%;
+  width: 100%;
+}
 body {
   background-color: #f8f8f8;
 }
@@ -30,6 +36,15 @@ input[type="file"].form-control {
 }
 #wrapper {
   width: 100%;
+  background: #fff;
+}
+#wrapper:before {
+  content: " ";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 65px;
+  height: 100%;
   background: #1c2f36;
 }
 #page-wrapper {
@@ -162,6 +177,7 @@ input[type="file"].form-control {
 .sidebar-nav .metismenu .nav-second-level a,
 .sidebar-nav .metismenu .nav-second-level span {
   text-align: left !important;
+  padding-bottom: 16px;
 }
 .sidebar-nav .metismenu a:hover,
 .sidebar-nav .metismenu a:active {
