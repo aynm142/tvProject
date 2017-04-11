@@ -47,7 +47,7 @@
                     <span class="icon-bar"></span>
                 </button>
 
-                <a class="navbar__logo clearfix" href="#">
+                <a class="navbar__logo clearfix" href="{{ url('/') }}">
                     <img src="{{asset('/admin/img/logo.png') }}" class="pull-left" alt="logo">
                     <span class="navbar__logo-name pull-left visible-xs">VIS TV</span>
                 </a>

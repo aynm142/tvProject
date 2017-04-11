@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use Mail;
+use App\Mail\NewUserWelcome;
+use Auth;
+use App\User;
 //use App\Http\Requests\CategoryRequest;
 //use Illuminate\Http\Request;
 //use Illuminate\Support\Facades\DB;
@@ -17,9 +21,13 @@ class TvController extends Controller
         return view('index');
     }
 
-    public function test()
+    public function email()
     {
-        //
+        $userEmails = User::all();
+        foreach ($userEmails as $userEmail) {
+            Mail::to($userEmail->email)->send(new NewUserWelcome());
+        }
+        return redirect('/');
     }
 
 

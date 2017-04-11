@@ -33,4 +33,6 @@ Route::post('login', 'Auth\LoginController@store');
 
 Route::get('logout', 'Auth\LoginController@logout');
 
+Route::get('/email', 'TvController@email')->name('sendEmail');
+
 Auth::routes();
