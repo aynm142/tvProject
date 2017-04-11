@@ -146,7 +146,7 @@
                                         @foreach ($categories_list as $category_id => $category_name)
                                             <option 
                                                 value="{{ $category_id }}"
-                                                @if ($category_id === $video->category_id)
+                                                @if ($category_id == $video->category_id)
                                                     selected="selected" 
                                                 @endif
                                             >{{ $category_name }}</option>
