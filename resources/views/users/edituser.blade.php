@@ -7,7 +7,7 @@
     {!! Form::label('email', 'User email:') !!}
     {!! Form::text('email', null, ['id' => 'email']) !!}
     {!! Form::label('password', 'User password: ((leave empty to keep your original password) [[[ Create a new help field for this :D ]]]') !!}
-    {!! Form::password('password', null) !!}
+    {!! Form::password('password') !!}
     {!! Form::label('admin', 'Admin: ') !!}
     {!! Form::select('is_admin', ['No', 'Yes']) !!}<br>
     {{ Form::submit('Save') }}
