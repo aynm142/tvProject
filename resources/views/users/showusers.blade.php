@@ -1,5 +1,6 @@
 @extends('app')
 @section('content')
+    <a href="{{ url('user/create') }}">Add new user</a>
     @foreach($users as $user)
         <a href="{{ url('/user/' . $user->id . 'edit') }}"> {{ $user->name }}</a>
         <p>{{ $user->email }}</p>

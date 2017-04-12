@@ -35,7 +35,9 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        User::create($request->all());
+        $data = $request->all();
+        $data["device_token"] = str_random();
+        User::create($data);
         return redirect('/user/showAll');
     }
 
@@ -82,15 +84,42 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate(request(), [
-            'name' => 'required|max:255',
-            'email' => 'required|email|max:255|unique:users',
-            'password' => 'required|min:6',
+            'name' => 'required|max:191',
+            'email' => 'required|email|max:191',
         ]);
 
         $user = User::findOrFail($id);
         $data = $request->all();
-        $data['password'] = bcrypt($data['password']);
+
+        // check username in database
+        if ($data['name'] != $user->name) {
+            $this->validate(request(), [
+               'name' => 'unique:users'
+            ]);
+        } else {
+            // else set new username
+        }
+
+        // check email in database
+        if ($data['email'] != $user->email) {
+            $this->validate(request(), [
+                'email' => 'unique:users'
+            ]);
+        } else {
+            // else set new email
+        }
+
+        // check if user put new password
+        if ($data['password']) {
+            $this->validate(request(), [
+                'password' => 'min:6',
+            ]);
+            $data['password'] = bcrypt($data['password']);
+        } else { // else set old password
+            $data["password"] = $user->password;
+        }
         $user->update($data);
+
 
         return redirect('/user/showAll');
     }
