@@ -30,7 +30,7 @@ class UserController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -42,50 +42,71 @@ class UserController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
-        $user = User::findOrFail($id);
+        try {
+            $user = User::findOrFail($id);
+        } catch (\Exception $exception) {
+            abort(404);
+        }
         return view('users.userprofile', compact('user'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        $user = User::findOrFail($id);
-        return view('users.useredit', compact('user'));
+        try {
+            $user = User::findOrFail($id);
+        } catch (\Exception $exception) {
+            abort(404);
+        }
+        return view('users.edituser', compact('user'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \Illuminate\Http\Request $request
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
+
     public function update(Request $request, $id)
     {
+        $this->validate(request(), [
+            'name' => 'required|max:255',
+            'email' => 'required|email|max:255|unique:users',
+            'password' => 'required|min:6',
+        ]);
+
         $user = User::findOrFail($id);
-        $user->update($request->all());
+        $data = $request->all();
+        $data['password'] = bcrypt($data['password']);
+        $user->update($data);
+
         return redirect('/user/showAll');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param  int $id
+     * @return \Illuminate\Http\Response|mixed
      */
     public function destroy($id)
     {
         $user = User::findOrFail($id);
+        if ($user->is_admin == 1) {
+            return \response()->json(["error" => "You can't remove admin"]);
+        }
         $user->delete();
 
         return redirect('/user/showAll');
@@ -109,7 +130,7 @@ class UserController extends Controller
 
         // check the password
         $userInfo = User::where('email', $login)->get();
-        if(isset($userInfo[0])) {
+        if (isset($userInfo[0])) {
             if (password_verify($password, $userInfo[0]->password)) {
                 $isPasswordTrue = true;
             } else {
@@ -122,8 +143,7 @@ class UserController extends Controller
             $userInfo[0]->device_token = $token;
             $userInfo[0]->save();
             return response()->json(['response' => 'All right!'], 200);
-        }
-        else {
+        } else {
             return response()->json(['response' => 'Something wrong'], 401);
         }
     }
