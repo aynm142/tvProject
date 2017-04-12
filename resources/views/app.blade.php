@@ -142,7 +142,7 @@
                             </a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="#">All users</a>
+                                    <a href="{{ action('UserController@showAllUsers') }}">All users</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->

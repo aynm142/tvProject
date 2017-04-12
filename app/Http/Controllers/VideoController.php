@@ -30,7 +30,7 @@ class VideoController extends Controller
     public function create()
     {
         $categories_list = Category::pluck('category_name', 'id');
-        return view('newvideo', compact('categories_list'));
+        return view('videos.newvideo', compact('categories_list'));
     }
 
     /**
@@ -92,7 +92,7 @@ class VideoController extends Controller
     {
         $video = Video::findOrFail($id);
         $categories_list = Category::pluck('category_name', 'id');
-        return view('videdit', compact('video', 'categories_list'));
+        return view('videos.videdit', compact('video', 'categories_list'));
     }
 
     /**
@@ -205,7 +205,7 @@ class VideoController extends Controller
     function showAll()
     {
         $videos = Video::All();
-        return view('showvideos', compact('videos'));
+        return view('videos.showvideos', compact('videos'));
     }
 
     protected function __deleteOldFileByLink($link)
@@ -238,7 +238,7 @@ class VideoController extends Controller
     {
         $userEmails = User::all();
         foreach ($userEmails as $userEmail) {
-            Mail::to($userEmail->email)->send(new NewVideo($category_id));
+            Mail::to($userEmail->email)->send(new NewVideo());
         }
     }
 }

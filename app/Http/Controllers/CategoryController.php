@@ -2,15 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 use App\Http\Requests\CategoryRequest;
 use App\User;
 use App\Video;
 use App\Category;
-use Illuminate\Support\Facades\Input;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Response;
 
 class CategoryController extends Controller
 {
@@ -31,7 +27,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        return view('newcat');
+        return view('categories.newcat');
     }
 
     /**
@@ -56,7 +52,7 @@ class CategoryController extends Controller
     public function edit($id)
     {
         $category = Category::findOrFail($id);
-        return view('catedit', compact('category'));
+        return view('categories.catedit', compact('category'));
     }
 
     /**
@@ -90,6 +86,6 @@ class CategoryController extends Controller
     public function showAll()
     {
         $categories = Category::where('category_name', '!=', 'None category')->get();
-        return view('showcat', compact('categories'));
+        return view('categories.showcat', compact('categories'));
     }
 }

@@ -39,45 +39,4 @@ class LoginController extends Controller
         $this->middleware('guest', ['except' => 'logout']);
     }
 
-    public function test()
-    {
-        dd(1);
-    }
-
-    public function api(Request $request)
-    {
-        $data = $request->All();
-        $login = $data['login'];
-        $password = $data['password'];
-        $token = $data['token'];
-        $isLoginTrue = false;
-        $isPasswordTrue = false;
-
-        // Check the login
-        if (User::where('email', $login)->count()) {
-            $isLoginTrue = true;
-        } else {
-            return response()->json(['response' => 'Login not found'], 404);
-        }
-
-        // check the password
-        $userInfo = User::where('email', $login)->get();
-        if(isset($userInfo[0])) {
-            if (password_verify($password, $userInfo[0]->password)) {
-                $isPasswordTrue = true;
-            } else {
-                return response()->json(['response' => 'Wrong password'], 404);
-            }
-        }
-
-        // Generate new device token
-        if ($isLoginTrue && $isPasswordTrue) {
-            $userInfo[0]->device_token = $token;
-            $userInfo[0]->save();
-            return response()->json(['response' => 'All right!'], 200);
-        }
-        else {
-            return response()->json(['response' => 'Something wrong'], 404);
-        }
-    }
 }

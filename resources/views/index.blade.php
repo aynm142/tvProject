@@ -63,7 +63,6 @@
     </div>
     <!-- /.row -->
     <div class="row">content
-        <a href="{{ route('sendEmail') }}" class="btn btn-primary">Send test email</a>
     </div>
     <!-- /.row -->
 @endsection

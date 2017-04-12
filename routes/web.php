@@ -14,6 +14,8 @@
 
 Route::group(['middleware' => 'AdminCheck'], function () {
     Route::get('/', 'TvController@index');
+    Route::get('/user/showAll', 'UserController@showAllUsers');
+    Route::resource('user', 'UserController', ['except' => ['index']]);
     Route::get('/category/show', 'CategoryController@showAll');
     Route::resource('category', 'CategoryController', ['except' => ['index']]);
     Route::get('video/showAll', 'VideoController@showAll');
@@ -26,13 +28,10 @@ Route::group(['middleware' => 'AdminCheck'], function () {
 Route::get('register', 'Auth\RegisterController@create');
 Route::post('register', 'Auth\RegisterController@store');
 
-Route::get('login/test', 'Auth\LoginController@test');
-Route::post('login/api', 'Auth\LoginController@api');
+Route::post('login/api', 'UserController@api');
 Route::get('login', 'Auth\LoginController@create');
 Route::post('login', 'Auth\LoginController@store');
 
 Route::get('logout', 'Auth\LoginController@logout');
-
-Route::get('/email', 'TvController@email')->name('sendEmail');
 
 Auth::routes();
