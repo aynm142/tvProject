@@ -1,10 +1,10 @@
 @component('mail::message')
 # Hello
 
-Welcome to our site
+New video in category!
 
 @component('mail::button', ['url' => 'http://test1.a2-lab.com/'])
-Button Text
+Check it here .....
 @endcomponent
 
 Thanks,<br>

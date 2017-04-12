@@ -2,16 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\UploadImageRequest;
-use function foo\func;
+use Mail;
+use App\Mail\NewVideo;
 use Illuminate\Http\Request;
-use App\Http\Requests\CategoryRequest;
 use App\User;
 use App\Video;
 use App\Category;
 use Illuminate\Support\Facades\Input;
-use Illuminate\Database\Eloquent\ModelNotFoundException;
-use Illuminate\Support\Facades\DB;
 
 class VideoController extends Controller
 {
@@ -79,6 +76,8 @@ class VideoController extends Controller
         $file_background->move($path_background, $video->background_url);
 
         $video->save();
+
+        $this->__newVideoNotification($video->category_id);
 
         return redirect('/');
     }
@@ -233,5 +232,13 @@ class VideoController extends Controller
         }
 
         return $links;
+    }
+
+    protected function __newVideoNotification($category_id)
+    {
+        $userEmails = User::all();
+        foreach ($userEmails as $userEmail) {
+            Mail::to($userEmail->email)->send(new NewVideo($category_id));
+        }
     }
 }
