@@ -4,6 +4,17 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * App\Category
+ *
+ * @property-read \App\User $user
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Video[] $videos
+ * @mixin \Eloquent
+ * @property int $id
+ * @property string $category_name
+ * @method static \Illuminate\Database\Query\Builder|\App\Category whereCategoryName($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Category whereId($value)
+ */
 class Category extends Model
 {
     public $timestamps = false;
