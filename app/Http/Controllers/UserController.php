@@ -133,10 +133,24 @@ class UserController extends Controller
     public function destroy($id)
     {
         $user = User::findOrFail($id);
-        if ($user->is_admin == 1) {
-            return \response()->json(["error" => "You can't remove admin"]);
+
+        // allow to delete all users,
+        // but prevent to delete current admin account
+        if ($user->is_admin === 1 && intval($user->id) === \Auth::id()) {
+            $message = ["error" => "You can't remove self admin account"];
+            // if is ajax request -> send json data
+            if (request()->ajax()) {
+                return response()->json($message);
+            }
+            // or just go back with error message
+            return back()->withErrors($message);
         }
+
         $user->delete();
+
+        if (request()->ajax()) {
+            return response()->json(["success" => "Successfully remove"]);
+        }
 
         return redirect('/user/showAll');
     }

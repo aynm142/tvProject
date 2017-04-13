@@ -10,6 +10,8 @@
         <!-- /.col-lg-12 -->
     </div>
 
+    @include('layouts.errors')
+
     <div class="row">
         <div class="col-lg-12">
             <div class="table-responsive">
@@ -68,12 +70,20 @@
                     if (result) {
                         $.ajax({
                             url: $form.attr('action'),
+                            method: $form.attr('method'),
+                            dataType: 'json',
                             data: $form.serializeArray()
                         }).then(function(data) {
-                            alert(data);
-                            console.log(data);
+                            if (data && data.error) {
+                                bootbox.alert(data.error);
+                                return;
+                            }
+
+                            $form.parents('tr').remove();
                         }).catch(function() {
-                            alert('catch it');
+                            bootbox.confirm("Some error occurred.. Reload page?", function() {
+                                window.location.reload();
+                            });
                         });
                         
                     }
