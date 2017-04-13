@@ -108,23 +108,27 @@
 				$form.ajaxForm({
 				    beforeSend: function() {
 				    	dialog = bootbox.dialog({
-						    message: '<div class="text-center"><p>Please wait while uploading...</p><div class="progress">  <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div></div></div>',
+						    message: '<div class="text-center"><p>Please wait while uploading...</p><div class="progress">  <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"><span class="upload-text">0% Upload</span></div></div></div>',
 						    closeButton: false
 						});
 						bar = dialog.find('.progress-bar');
+						percent = dialog.find('.progress-bar .upload-text');
 
 				        var percentVal = '0%';
 				        bar.width(percentVal)
+				        percent.html(percentVal + ' Upload');
 				    },
 				    uploadProgress: function(event, position, total, percentComplete) {
 				        var percentVal = percentComplete + '%';
 				        bar.attr('aria-valuenow', percentComplete);
 				        bar.width(percentVal)
+				        percent.html(percentVal + ' Upload');
 				    },
 				    success: function() {
-				        var percentVal = '99%';
-				        bar.attr('aria-valuenow', '99');
+				        var percentVal = '100%';
+				        bar.attr('aria-valuenow', '100');
 				        bar.width(percentVal)
+				        percent.html(percentVal + ' Upload');
 				    },
 					complete: function(xhr) {
 				        dialog.modal('hide');
@@ -151,7 +155,7 @@
 							return;
 						}
 
-						// location.reload();
+						location.reload();
 					}
 				});
 			}
