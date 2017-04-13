@@ -79,6 +79,14 @@ class VideoController extends Controller
 
         $this->__newVideoNotification($video->category_id);
 
+        // if ajax then send json response
+        if ( request()->ajax() ) {
+            return response()->json([
+                'status' => true,
+                'redirect_url' => url('/'),
+            ]);
+        }
+
         return redirect('/');
     }
 
@@ -104,6 +112,14 @@ class VideoController extends Controller
      */
     public function update(Request $request, $id)
     {
+        // fix for jQuery ajaxForm
+        if ( $request->ajax() ) {
+            $vid_file = request('video_url');
+            if (is_array($vid_file) && in_array(null, $vid_file)) {
+                $request->merge(['video_url' => null]);
+            }
+        }
+
         // validation rules
         $validation_rules = [];
         if ( request('logo_url') ) {
@@ -113,13 +129,12 @@ class VideoController extends Controller
         if ( request('background_url') ) {
             $validation_rules['background_url'] = 'required|image|mimes:jpeg,bmp,png,jpg';
         }
-
         if ( request('video_url') ) {
             $validation_rules['video_url.*'] = 'required|mimetypes:video/mp4';
         }
 
         if (count($validation_rules)) {
-            $this->validate(request(), $validation_rules);
+            $this->validate($request, $validation_rules);
         }
 
         $video = Video::findOrFail($id);
@@ -128,9 +143,16 @@ class VideoController extends Controller
 
         // check if have at least one video file
         if ( !count($old_video_links) && is_null(request()->video_url) ) {
-            return back()
-                ->withErrors(['video_upload' => 'The video must have at least one video file!'])
-                ->withInput();
+            $mess = ['video_upload' => 'The video must have at least one video file!'];
+            
+            if ( $request->ajax() ) {
+                return response()->json($mess);
+            } else {
+                return back()
+                    ->withErrors($mess)
+                    ->withInput();
+            }
+            
         }
 
         foreach ($video->getVideoUrl() as $link) {
@@ -169,13 +191,26 @@ class VideoController extends Controller
         }
 
         try {
-            // try to update video
-            if (!$video->save()) throw new \Exception("Unable to save");
+            $video->save();
         } catch (\Exception $e) {
-            // return to back and display error message
-            return back()->withErrors(
-                ['message' => 'Unable to update video.']
-            );
+            $mess = ['message' => 'Unable to update video.'];
+            
+            if ( $request->ajax() ) {
+                return response()->json($mess);
+            } else {
+                // return to back and display error message
+                return back()
+                    ->withErrors($mess)
+                    ->withInput();
+            }
+        }
+
+        // if ajax then send json response
+        if ( $request->ajax() ) {
+            return response()->json([
+                'status' => true,
+                'redirect_url' => url('video/showAll'),
+            ]);
         }
 
         return redirect('video/showAll');

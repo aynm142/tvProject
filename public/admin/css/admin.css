@@ -25,6 +25,12 @@
 .display-in-b {
   display: inline-block;
 }
+.bootbox.modal {
+  z-index: 1071;
+}
+.bootbox.modal + .modal-backdrop {
+  z-index: 1070;
+}
 html,
 body,
 #wrapper {

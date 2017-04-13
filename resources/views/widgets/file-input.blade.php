@@ -38,6 +38,7 @@
 	<?php View::share('widgets_file_input_is_included', true); ?>
 
 	@push('scripts')
+	<script src="{{ asset('/admin/js/jquery.form.min.js') }}"></script>
 	<script type="text/javascript">
 		$(function() {
 			function BindCustomEvent($self) {
@@ -96,6 +97,66 @@
 
 	        });
 		});
+
+		;(function($) {
+			var $form = $('form[enctype="multipart/form-data"]');
+
+			if ($form.length) {
+				var dialog;
+				var bar;
+				   
+				$form.ajaxForm({
+				    beforeSend: function() {
+				    	dialog = bootbox.dialog({
+						    message: '<div class="text-center"><p>Please wait while uploading...</p><div class="progress">  <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div></div></div>',
+						    closeButton: false
+						});
+						bar = dialog.find('.progress-bar');
+
+				        var percentVal = '0%';
+				        bar.width(percentVal)
+				    },
+				    uploadProgress: function(event, position, total, percentComplete) {
+				        var percentVal = percentComplete + '%';
+				        bar.attr('aria-valuenow', percentComplete);
+				        bar.width(percentVal)
+				    },
+				    success: function() {
+				        var percentVal = '99%';
+				        bar.attr('aria-valuenow', '99');
+				        bar.width(percentVal)
+				    },
+					complete: function(xhr) {
+				        dialog.modal('hide');
+						
+						if ( xhr.responseJSON ) {
+							var data = xhr.responseJSON;
+							if ( data.status && data.redirect_url) {
+								location.href = data.redirect_url;
+							} else {
+								var mess = '<div class="row"><div class="col-lg-12">';
+								var templ = '<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>__error__</div>';
+								console.log(data);
+								console.log(data.length);
+								for (var i in data) {
+									mess += templ.split('__error__').join(data[i]);
+								}
+								mess += '</div></div>';
+								$(mess).insertBefore($form.parents('.row'));
+
+								// scoll to top
+								$('html, body').stop().animate({scrollTop:0}, '500', 'swing');
+							}
+
+							return;
+						}
+
+						// location.reload();
+					}
+				});
+			}
+			
+		})(jQuery);
 	</script>
 	@endpush
 @endif
