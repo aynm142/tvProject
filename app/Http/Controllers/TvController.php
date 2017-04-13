@@ -2,30 +2,28 @@
 
 namespace App\Http\Controllers;
 
-use Mail;
-use App\Mail\NewUserWelcome;
+
+use Illuminate\Http\Request;
+use App\Statistic;
 use App\User;
-//use App\Http\Requests\CategoryRequest;
-//use Illuminate\Http\Request;
-//use Illuminate\Support\Facades\DB;
-//use App\Category;
-//use App\Video;
-//use Illuminate\Support\Facades\Input;
+use App\Category;
+use App\Video;
 
 class TvController extends Controller
 {
 
     public function index()
     {
-        return view('index');
+        $statistic = [];
+        $totalUsers = User::count();
+        $totalVideos = Video::count();
+        $totalCategories = Category::count();
+        $totalSubscribers = 0;
+        $statistic["totalUsers"] = $totalUsers;
+        $statistic["totalVideos"] = $totalVideos;
+        $statistic["totalCategories"] = $totalCategories - 1;
+        $statistic["totalSubscribes"] = $totalSubscribers;
+        return view('index', compact('statistic'));
     }
-
-
-    public function showUsers()
-    {
-        $users = User::all();
-        return view("showusers", compact("users"));
-    }
-
 }
 
