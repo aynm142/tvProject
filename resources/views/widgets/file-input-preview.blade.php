@@ -62,6 +62,15 @@
 						$self.find(".image-preview-filename").val(file.name);            
 						img.attr('src', e.target.result);
 						$self.attr("data-content",$(img)[0].outerHTML).popover("show");
+
+						$self.hover(
+							function () {
+							   $self.popover('show');
+							}, 
+							 function () {
+							   $self.popover('hide');
+							}
+						);
 					}        
 					reader.readAsDataURL(file);
 				});
