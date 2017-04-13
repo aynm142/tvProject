@@ -35,6 +35,12 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'name' => 'required|max:191|unique:users',
+            'email' => 'required|email|max:191|unique:users',
+            'password' => 'required|min:6',
+        ]);
+
         $data = $request->all();
         $data["device_token"] = str_random();
         User::create($data);

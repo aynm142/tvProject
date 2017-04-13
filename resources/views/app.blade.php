@@ -144,6 +144,9 @@
                                 <li>
                                     <a href="{{ action('UserController@showAllUsers') }}">All users</a>
                                 </li>
+                                <li>
+                                    <a href="{{ action('UserController@create') }}">Add users</a>
+                                </li>
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
