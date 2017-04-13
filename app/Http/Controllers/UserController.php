@@ -102,8 +102,6 @@ class UserController extends Controller
             $this->validate(request(), [
                'name' => 'unique:users'
             ]);
-        } else {
-            // else set new username
         }
 
         // check email in database
@@ -111,8 +109,6 @@ class UserController extends Controller
             $this->validate(request(), [
                 'email' => 'unique:users'
             ]);
-        } else {
-            // else set new email
         }
 
         // check if user put new password
@@ -121,11 +117,23 @@ class UserController extends Controller
                 'password' => 'min:6',
             ]);
             $data['password'] = bcrypt($data['password']);
-        } else { // else set old password
-            $data["password"] = $user->password;
+        } else {
+            unset($data['password']);
         }
-        $user->update($data);
 
+        // Check if there are even at least one admin
+        if (0 === intval($data['is_admin']) && $user->is_admin) {
+            $admin_total = User::where([
+                ['id', '!=', $user->id],
+                ['is_admin', '=', 1],
+            ])->count();
+
+            if (!$admin_total) {
+                return back()->withErrors(['error' => 'Must be at least one administrator']);
+            }
+        }
+
+        $user->update($data);
 
         return redirect('/user/showAll');
     }

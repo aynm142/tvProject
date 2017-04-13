@@ -34,7 +34,7 @@
                     {!! Form::select('is_admin', ['No', 'Yes'], null, ['class' => 'form-control', 'required' => 'required']) !!}
                 </div>
 
-                <button type="submit" class="btn btn-default">Add new</button>
+                <button type="submit" class="btn btn-default">Update</button>
             {!! Form::close() !!}
         </div>
     </div>  
