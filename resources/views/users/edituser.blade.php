@@ -13,6 +13,9 @@
     <div class="row">
         <div class="col-xs-12">
             {!! Form::model($user, ['method' => 'PATCH', 'action' => ['UserController@update', $user->id]]) !!}
+                {{-- hack to prevent password autofill --}}
+                <input type="password" style="width: 0;height: 0; visibility: hidden;position:absolute;left:0;top:0;"/>
+                
                 <div class="form-group">
                     {!! Form::label('name', 'User name') !!}
                     {!! Form::text('name', null, ['class' => 'form-control', 'required' => 'required', 'placeholder' => 'user name']) !!}
@@ -26,7 +29,7 @@
                 <div class="form-group">
                     {!! Form::label('password', 'User password') !!}
                     <p class="help-block">leave empty to keep your original password</p>
-                    {!! Form::password('password', ['class' => 'form-control', 'placeholder' => 'minimum 6 characters']) !!}
+                    {!! Form::password('password', ['class' => 'form-control', 'autocompelete' => 'new-password', 'placeholder' => 'minimum 6 characters']) !!}
                 </div>
 
                 <div class="form-group">

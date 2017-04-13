@@ -13,6 +13,9 @@
 	<div class="row">
 		<div class="col-xs-12">
 			{!! Form::open(['method' => 'post', 'url' => '/user/']) !!}
+				{{-- hack to prevent password autofill --}}
+                <input type="password" style="width: 0;height: 0; visibility: hidden;position:absolute;left:0;top:0;"/>
+                
 				<div class="form-group">
 					{!! Form::label('name', 'User name') !!}
 					{!! Form::text('name', null, ['class' => 'form-control', 'required' => 'required', 'placeholder' => 'user name']) !!}
