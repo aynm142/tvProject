@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 
 use Illuminate\Http\Request;
-use App\Statistic;
+
 use App\User;
 use App\Category;
 use App\Video;
