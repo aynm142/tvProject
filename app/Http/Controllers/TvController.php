@@ -13,8 +13,8 @@ class TvController extends Controller
 
     public function index()
     {
-        $promo = PromocodesFacade::generate(5);
-        dd($promo);
+//        $promo = PromocodesFacade::generate(5);
+//        dd($promo);
         $statistic = [];
         $totalUsers = User::count();
         $totalVideos = Video::count();

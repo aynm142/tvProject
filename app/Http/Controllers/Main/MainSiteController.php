@@ -9,7 +9,8 @@ class MainSiteController extends Controller
 {
     public function index()
     {
-        //
+
+        return view('main.index.home');
     }
 
     public function video()
