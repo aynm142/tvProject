@@ -34,6 +34,7 @@ class UserController extends Controller
 
         $data = $request->all();
         $data["device_token"] = str_random();
+        $data["password"] = bcrypt($request->password);
         User::create($data);
         return redirect('/dashboard/user/showAll');
     }
