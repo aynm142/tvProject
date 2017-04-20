@@ -14,7 +14,7 @@
 
 	<div class="row">
 		<div class="col-lg-12">
-			{!! Form::open(['method' => 'post', 'url' => '/category/']) !!}
+			{!! Form::open(['method' => 'post', 'url' => 'dashboard/category/']) !!}
 				<div class="form-group input-group">
                     <input name="category_name" type="text" placeholder="Category name" class="form-control">
                     <span class="input-group-btn">

@@ -2,22 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Http\Requests\CategoryRequest;
 use App\Category;
 
 class CategoryController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -31,13 +20,13 @@ class CategoryController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
+     * @param  \App\Http\Requests\CategoryRequest $request
      * @return \Illuminate\Http\Response
      */
     public function store(CategoryRequest $request)
     {
         Category::create($request->all());
-        return redirect('/category/show');
+        return redirect('dashboard/category/show');
     }
 
     /**
@@ -56,7 +45,7 @@ class CategoryController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
+     * @param  \App\Http\Requests\CategoryRequest $request
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
@@ -64,7 +53,7 @@ class CategoryController extends Controller
     {
         $category = Category::findOrFail($id);
         $category->update($request->all());
-        return redirect('/category/show');
+        return redirect('dashboard/category/show');
     }
 
     /**
@@ -78,12 +67,14 @@ class CategoryController extends Controller
         $category = Category::findOrFail($id);
         $category->delete();
 
-        return redirect('/category/show');
+        return redirect('dashboard/category/show');
     }
 
     public function showAll()
     {
-        $categories = Category::where('category_name', '!=', 'None category')->get();
+        $categories = Category::where('category_name', '!=', 'None category')
+//            ->orderBy('create_at')
+            ->get();
         return view('categories.showcat', compact('categories'));
     }
 }
