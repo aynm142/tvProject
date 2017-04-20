@@ -11,8 +11,11 @@
 |
 */
 
+Route::group([],function() {
+    Route::get('/', 'Main\MainSiteController@index');
+});
 
-Route::group(['middleware' => 'AdminCheck'], function () {
+Route::group(['middleware' => 'AdminCheck', 'prefix' => '/dashboard'], function () {
     Route::get('/', 'TvController@index');
     Route::get('/user/showAll', 'UserController@showAllUsers');
     Route::resource('user', 'UserController', ['except' => ['index']]);

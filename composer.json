@@ -10,7 +10,8 @@
         "guzzlehttp/guzzle": "^6.2",
         "laravel/framework": "5.4.*",
         "laravel/tinker": "~1.0",
-        "laravelcollective/html": "^5.4"
+        "laravelcollective/html": "^5.4",
+        "trexology/promocodes": "^1.1"
     },
     "require-dev": {
         "barryvdh/laravel-ide-helper": "^2.3",
