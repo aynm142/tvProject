@@ -35,7 +35,7 @@ class UserController extends Controller
         $data = $request->all();
         $data["device_token"] = str_random();
         User::create($data);
-        return redirect('/user/showAll');
+        return redirect('/dashboard/user/showAll');
     }
 
     /**
@@ -77,7 +77,6 @@ class UserController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response|mixed
      */
-
     public function update(Request $request, $id)
     {
         $this->validate(request(), [
@@ -126,7 +125,7 @@ class UserController extends Controller
 
         $user->update($data);
 
-        return redirect('/user/showAll');
+        return redirect('/dashboard/user/showAll');
     }
 
     /**
@@ -157,7 +156,7 @@ class UserController extends Controller
             return response()->json(["success" => "Successfully remove"]);
         }
 
-        return redirect('/user/showAll');
+        return redirect('/dashboard/user/showAll');
     }
 
     public function api(Request $request)
