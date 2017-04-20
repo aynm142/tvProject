@@ -11,8 +11,9 @@
 |
 */
 
-Route::group([],function() {
+Route::group([], function() {
     Route::get('/', 'Main\MainSiteController@index');
+    Route::get('/video/{id}-{name}', 'Main\MainSiteController@video')->name('video-page');
 });
 
 Route::group(['middleware' => 'AdminCheck', 'prefix' => '/dashboard'], function () {

@@ -58,7 +58,7 @@
 
 						@foreach ($films as $film)
 							<div class="video__item col-xs-4 col-sm-4 col-md-3 col-lg-1">
-								<a href="#" class="col-item">
+								<a href="{{ route('video-page', ['id' => $film->id, 'name' => $film->getSlug()]) }}" class="col-item">
 									<div class="photo">
 										<img src="{{ $film->logo_url or 'http://placehold.it/320x260.png' }}" class="img-responsive" alt="a" />
 									</div>

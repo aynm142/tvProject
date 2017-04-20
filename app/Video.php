@@ -39,6 +39,11 @@ class Video extends Model
         'category_id',
     ];
 
+    public function getSlug()
+    {
+        return str_slug($this->video_name, '-');
+    }
+
     public function categories()
     {
         return $this->belongsTo('App\Category');

@@ -7,6 +7,8 @@
 	<title>Document</title>
 	
 	<link rel="stylesheet" href="{{ asset('/frontend/vendor/bootstrap/dist/css/bootstrap.css') }}">
+	@stack('styles')
+	
 	<link rel="stylesheet" href="{{ asset('/frontend/css/app.css') }}">
 </head>
 <body>
@@ -15,7 +17,7 @@
 
 	<div id="wrapper">
 		@include('main.partials.sidebar')
-		<div id="main-wrapper" class="container-fluid" style="background-image: url(https://images3.alphacoders.com/723/72397.jpg)">
+		<div id="main-wrapper" class="container-fluid" style="background-image: url('{{ $main_bg  }}')">
 			<div id="main">
 				@yield('content')
 			</div>          
@@ -27,7 +29,7 @@
 	
 	<script src="{{ asset('/frontend/vendor/jquery-mousewheel/jquery.mousewheel.min.js') }}"></script>
 	<script src="{{ asset('/frontend/vendor/jquery-touchswipe/jquery.touchSwipe.min.js') }}"></script>
-	
+	@stack('scripts')
 	<script src="{{ asset('/frontend/js/app.min.js') }}"></script>
 </body>
 </html>
