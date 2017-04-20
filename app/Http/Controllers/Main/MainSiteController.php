@@ -10,7 +10,10 @@ class MainSiteController extends Controller
 {
     public function index()
     {
-        $categories = Category::all();
+        $categories = Category::
+        where('category_name', '!=', 'None Category')
+        ->orderBy('category_name')
+        ->get();
         return view('main.index.home', compact('categories'));
     }
 
