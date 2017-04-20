@@ -20,10 +20,10 @@
 				
 				@if ( !Auth::user() )
 					<li>
-						<a href="{{ url('/login') }}">Log in</a>
+						<a href="{{ url('/login') }}">Sign in</a>
 					</li>
 					<li>
-						<a href="{{ url('/register') }}">Register</a>
+						<a href="{{ url('/register') }}">Sign up</a>
 					</li>
 				@else
 				    <li class="dropdown">

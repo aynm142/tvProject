@@ -62,7 +62,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="{{ route('logout') }}"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                        <a href="{{ route('logout') }}"><i class="fa fa-sign-out fa-fw"></i>Logout</a>
                     </li>
                 @else
                     <li>
