@@ -162,9 +162,11 @@ body {
 #header a {
   color: #e5e7e8;
 }
+#header .navbar-nav {
+  margin-top: 10px;
+}
 #header .navbar-nav > li > a {
   height: 100%;
-  padding-top: 10px;
   padding-bottom: 0 !important;
 }
 #header .navbar-nav > .open > a,

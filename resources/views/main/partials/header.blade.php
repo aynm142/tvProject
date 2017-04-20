@@ -17,21 +17,36 @@
 	            <li class="visible-xs" style="padding: 10px 5px;">
 	                <a data-toggle="show-aside-menu" href="#">Show menu</a>
 	            </li>
-	            <li class="dropdown">
-	                <a href="#" class="dropdown-toggle user clearfix" data-toggle="dropdown">
-	                    <span class="pull-left user__name">Skifcha <b class="caret"></b></span>
-	                    <span class="pull-right user__photo">
-	                        <img src="https://www.gravatar.com/avatar/205e460b479e2e5bs48aec07710c08d50?d=retro" alt="user_name" class="img-responsive img-circle">
-	                    </span>
-	                </a>
-	                <ul class="dropdown-menu">
-	                    <li><a href="#">View profile</a></li>
-	                    <li><a href="#">Billing</a></li>
-	                    <li><a href="#">Subscribers</a></li>
-	                    <li><a href="#">Settings</a></li>
-	                    <li><a href="#">Log Out</a></li>
-	                </ul>
-	            </li>
+				
+				@if ( !Auth::user() )
+					<li>
+						<a href="{{ url('/login') }}">Log in</a>
+					</li>
+					<li>
+						<a href="{{ url('/register') }}">Register</a>
+					</li>
+				@else
+				    <li class="dropdown">
+		                <a href="#" class="dropdown-toggle user clearfix" data-toggle="dropdown">
+		                    <span class="pull-left user__name">{{ Auth::user()->name }} <b class="caret"></b></span>
+		                    <span class="pull-right user__photo">
+		                        <img src="https://www.gravatar.com/avatar/{{ md5(Auth::user()->email) }}?d=retro" alt="user_name" class="img-responsive img-circle">
+		                    </span>
+		                </a>
+		                <ul class="dropdown-menu">
+		                	@if ( intval(Auth::user()->is_admin) === 1 )
+		                    	<li><a target="blank" href="{{ url('/dashboard') }}">Dashboard</a></li>
+		                	@endif
+		                    <li><a href="#">View profile</a></li>
+		                    <li><a href="#">Billing</a></li>
+		                    <li><a href="#">Subscribers</a></li>
+		                    <li><a href="#">Settings</a></li>
+		                    <li><a href="{{ url('logout') }}">Log Out</a></li>
+		                </ul>
+		            </li>
+				@endif
+	            
+
 	        </ul>
 	    </nav>
 	</div>
