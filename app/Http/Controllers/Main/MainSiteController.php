@@ -8,14 +8,21 @@ use App\Category;
 
 class MainSiteController extends Controller
 {
-    public function index()
+    public function __construct()
     {
         $categories = Category::
         where('category_name', '!=', 'None Category')
             ->orderBy('category_name')
             ->get();
 
-        return view('main.index.home', compact('categories'));
+        view()->share('categories', $categories);
+    }
+
+    public function index()
+    {
+        
+
+        return view('main.index.home');
     }
 
     public function video()
