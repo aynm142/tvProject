@@ -57,7 +57,7 @@
             <ul class="nav navbar-top-links navbar-right">
                 @if(Auth::check())
                     <li>
-                        <a href="#" target="_blank">
+                        <a href="{{ url('/') }}" target="_blank">
                             <span class="label label-primary">view my site</span>
                         </a>
                     </li>
