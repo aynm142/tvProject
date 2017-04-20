@@ -9,7 +9,7 @@
         <div class="sidebar__menu">
             @foreach($categories as $category)
                 <div class="sidebar__menu-item">
-                    <a data-genre="{{ $category->id }}" href="index.html">{{ $category->category_name }}</a>
+                    <a data-genre="{{ $category->id }}" href="{{ url('/') }}">{{ $category->category_name }}</a>
                 </div>
             @endforeach
         </div>
