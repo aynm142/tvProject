@@ -72,8 +72,9 @@ class CategoryController extends Controller
 
     public function showAll()
     {
-        $categories = Category::where('category_name', '!=', 'None category')
-//            ->orderBy('create_at')
+        $categories = Category::
+            where('category_name', '!=', 'None category')
+            ->orderBy('category_name')
             ->get();
         return view('categories.showcat', compact('categories'));
     }

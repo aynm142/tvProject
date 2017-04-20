@@ -12,7 +12,7 @@
 
 	<div class="row">
 		<div class="col-xs-12">
-			{!! Form::open(['method' => 'post', 'url' => '/user/']) !!}
+			{!! Form::open(['method' => 'post', 'url' => 'dashboard/user/']) !!}
 				{{-- hack to prevent password autofill --}}
                 <input type="password" style="width: 0;height: 0; visibility: hidden;position:absolute;left:0;top:0;"/>
                 

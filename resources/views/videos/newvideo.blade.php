@@ -13,7 +13,7 @@
 	@include('layouts.errors')
 
 	<div class="row">
-			{!! Form::open(['method' => 'POST', 'url' => '/video', 'files' => true]) !!}
+			{!! Form::open(['method' => 'POST', 'url' => '/dashboard/video', 'files' => true]) !!}
 			<div class="col-lg-12">
 				<div class="panel panel-default">
 					<div class="panel-heading">

@@ -17,7 +17,7 @@
 			<div class="col-xs-12 col-sm-6 col-md-4 video">
 				<article>
 					<header>
-						<a href="{{ URL::to('/video/' . $video->id . '/edit') }}">
+						<a href="{{ URL::to('/dashboard/video/' . $video->id . '/edit') }}">
 							<img class="img-responsive" src="{{ $video->logo_url }}" alt="video logo">
 						</a>
 					</header>
@@ -27,11 +27,11 @@
 					</section>
 					<footer class="clearfix">
 						<div class="pull-right footer__buttons">
-							<a href="{{ URL::to('/video/' . $video->id . '/edit') }}" class="btn btn-link video-btn__delimetr--right">
+							<a href="{{ URL::to('/dashboard/video/' . $video->id . '/edit') }}" class="btn btn-link video-btn__delimetr--right">
 								<i class="fa fa-pencil"></i>
 							</a>
 							
-							{!! Form::Open(['method' => 'DELETE', 'url' => '/video/' . $video->id]) !!}
+							{!! Form::Open(['method' => 'DELETE', 'url' => '/dashboard/video/' . $video->id]) !!}
 					            <button type="submit" class="btn btn-link">
 									<i class="fa fa-trash"></i>
 								</button>

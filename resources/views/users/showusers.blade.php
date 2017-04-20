@@ -4,7 +4,7 @@
         <div class="col-lg-12">
             <h3 class="page-header">
                 <i class="fa fa-users"></i> Users
-                <a href="{{ url('/user/create') }}" class="btn btn-success btn-sm m-l-20"><i class="fa fa-plus"></i> Add new user</a>
+                <a href="{{ url('dashboard/user/create') }}" class="btn btn-success btn-sm m-l-20"><i class="fa fa-plus"></i> Add new user</a>
             </h3>
         </div>
         <!-- /.col-lg-12 -->
@@ -28,7 +28,7 @@
                         @foreach($users as $user)
                             <tr>
                                 <td>
-                                    <a href="{{ url('/user/' . $user->id . '/edit') }}">{{ $user->email }}</a>
+                                    <a href="{{ url('dashboard/user/' . $user->id . '/edit') }}">{{ $user->email }}</a>
                                 </td>
                                 <td>
                                     {{ $user->name }}
@@ -42,9 +42,9 @@
                                 </td>
                                 <td>1</td>
                                 <td>
-                                    <a href="{{ url('/user/' . $user->id . '/edit') }}" class="btn btn-xs btn-info"><i class="fa fa-edit"></i> Edit</a>
+                                    <a href="{{ url('dashboard/user/' . $user->id . '/edit') }}" class="btn btn-xs btn-info"><i class="fa fa-edit"></i> Edit</a>
 
-                                    {!! Form::Open(['method' => 'DELETE', 'url' => '/user/' . $user->id, 'class' => 'display-in-b delete-user']) !!}
+                                    {!! Form::Open(['method' => 'DELETE', 'url' => 'dashboard/user/' . $user->id, 'class' => 'display-in-b delete-user']) !!}
                                         <button type="submit" class="btn btn-xs btn-danger delete"><i class="fa fa-trash"></i> Delete</button>
                                     {!! Form::close() !!}
                                 </td>

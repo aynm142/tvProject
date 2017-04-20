@@ -83,11 +83,11 @@ class VideoController extends Controller
         if ( request()->ajax() ) {
             return response()->json([
                 'status' => true,
-                'redirect_url' => url('/'),
+                'redirect_url' => url('/dashboard'),
             ]);
         }
 
-        return redirect('/');
+        return redirect('/dashboard');
     }
 
     /**
@@ -209,11 +209,11 @@ class VideoController extends Controller
         if ( $request->ajax() ) {
             return response()->json([
                 'status' => true,
-                'redirect_url' => url('video/showAll'),
+                'redirect_url' => url('/dashboard/video/showAll'),
             ]);
         }
 
-        return redirect('video/showAll');
+        return redirect('/dashboard/video/showAll');
     }
 
     /**
@@ -233,13 +233,14 @@ class VideoController extends Controller
             $this->__deleteOldFileByLink($vid);
         }
         $video->delete();
-        return redirect('/video/showAll');
+        return redirect('/dashboard/video/showAll');
     }
 
-    public
-    function showAll()
+    public function showAll()
     {
-        $videos = Video::All();
+        $videos = Video::
+        orderBy('created_at', 'desc')
+        ->get();
         return view('videos.showvideos', compact('videos'));
     }
 
@@ -269,7 +270,7 @@ class VideoController extends Controller
         return $links;
     }
 
-    protected function __newVideoNotification($category_id)
+    protected function __newVideoNotification()
     {
         $userEmails = User::all();
         foreach ($userEmails as $userEmail) {
