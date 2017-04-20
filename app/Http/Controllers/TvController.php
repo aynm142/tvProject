@@ -2,18 +2,19 @@
 
 namespace App\Http\Controllers;
 
-
-use Illuminate\Http\Request;
-
 use App\User;
 use App\Category;
 use App\Video;
+use Trexology\Promocodes\Facades\PromocodesFacade;
+
 
 class TvController extends Controller
 {
 
     public function index()
     {
+        $promo = PromocodesFacade::generate(5);
+        dd($promo);
         $statistic = [];
         $totalUsers = User::count();
         $totalVideos = Video::count();

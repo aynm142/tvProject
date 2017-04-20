@@ -2,15 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\User;
 use App\Video;
 use App\Category;
 use Illuminate\Support\Facades\Response;
 
+
 class ApiController extends Controller
 {
-    public function categoryApi(Request $request)
+    public function categoryApi()
     {
         $categories = ['category' => []];
 
@@ -18,7 +17,7 @@ class ApiController extends Controller
             $categories['category'][] = $category->toArray();
         }
 
-        return Response::json($categories);
+        return \response()->json($categories);
     }
 
     public function videoApi()

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "6b0cafd757857944548250ea6ec235b7",
+    "content-hash": "9f6963094e1ca11953b971d61d9bd98b",
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -2496,6 +2496,50 @@
             "description": "CssToInlineStyles is a class that enables you to convert HTML-pages/files into HTML-pages/files with inline styles. This is very useful when you're sending emails.",
             "homepage": "https://github.com/tijsverkoyen/CssToInlineStyles",
             "time": "2016-09-20T12:50:39+00:00"
+        },
+        {
+            "name": "trexology/promocodes",
+            "version": "1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Trexology/Promocodes.git",
+                "reference": "4846f3813ceba18e6a43eebd0e8cb437d7f467f6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Trexology/Promocodes/zipball/4846f3813ceba18e6a43eebd0e8cb437d7f467f6",
+                "reference": "4846f3813ceba18e6a43eebd0e8cb437d7f467f6",
+                "shasum": ""
+            },
+            "require": {
+                "laravel/framework": "~5.0",
+                "php": ">=5.4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Trexology\\Promocodes\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "trexology"
+                }
+            ],
+            "description": "Promotional Codes Generator for Laravel 5.1",
+            "homepage": "https://github.com/trexology/promocodes",
+            "keywords": [
+                "coupon code",
+                "discount code",
+                "laravel",
+                "php",
+                "promo code"
+            ],
+            "time": "2016-08-18T03:26:15+00:00"
         },
         {
             "name": "vlucas/phpdotenv",
