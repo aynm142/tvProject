@@ -4,7 +4,7 @@
 	    <div class="col-lg-12">
 	        <h3 class="page-header">
 	        	<i class="fa fa-list"></i> All Categories
-	        	<a href="{{ url('/category/create') }}" class="btn btn-success btn-sm m-l-20"><i class="fa fa-plus"></i> Add new category</a>
+	        	<a href="{{ route('category.create') }}" class="btn btn-success btn-sm m-l-20"><i class="fa fa-plus"></i> Add new category</a>
 	        </h3>
 	    </div>
 	    <!-- /.col-lg-12 -->
