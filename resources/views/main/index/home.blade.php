@@ -47,7 +47,7 @@
 				</div>
 			</div>
 			<div class="category__slider-video">
-				<div class="row">
+				<div class="row">7
 					<div class="video__item col-xs-4 col-sm-4 col-md-3 col-lg-1">
 						<a href="video-page.html" class="col-item">
 							<div class="photo">
