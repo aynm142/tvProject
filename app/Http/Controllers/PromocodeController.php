@@ -4,11 +4,19 @@ namespace App\Http\Controllers;
 
 
 use App\Libs\PromocodeGenerator;
+use App\Promocode;
 use Carbon\Carbon;
 
 class PromocodeController extends Controller
 {
     public function index()
+    {
+        $all_promo = Promocode::paginate(25);
+
+        return view('promocodes.promo', compact('all_promo'));
+    }
+
+    public function add()
     {
         $delete_time = Carbon::now()->addHours(10);
 
@@ -19,11 +27,6 @@ class PromocodeController extends Controller
 
         );
 
-        return 'promo';
-    }
-
-    public function add()
-    {
         return view('promocodes.add');
     }
 }
