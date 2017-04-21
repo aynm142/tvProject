@@ -35,8 +35,13 @@ class Promocode extends Model
      */
     protected $fillable = [
         'code',
-        'reward',
-        'quantity',
-        'is_used',
+        'id',
+        'user_id',
+        'delete_time',
     ];
+
+    public function users()
+    {
+        return $this->belongsTo('App\User');
+    }
 }

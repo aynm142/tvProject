@@ -51,4 +51,8 @@ class User extends Authenticatable
         'password', 'remember_token', 'push_token',
     ];
 
+    public function promocodes()
+    {
+        return $this->belongsTo('App\Promocode');
+    }
 }

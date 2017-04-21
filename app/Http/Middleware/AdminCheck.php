@@ -18,13 +18,13 @@ class AdminCheck
     {
         if (Auth::user() != null) {
             if (Auth::user()->is_admin == 0) {
-                return redirect('/logout');
+                return redirect('/');
             } else {
                 return $next($request);
             }
 
         } else {
-            return redirect('/login');
+            return redirect('/');
         }
     }
 }

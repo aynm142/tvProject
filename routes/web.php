@@ -18,12 +18,15 @@ Route::group([], function() {
 
 Route::group(['middleware' => 'AdminCheck', 'prefix' => '/dashboard'], function () {
     Route::get('/', 'TvController@index');
+    Route::get('/promo', 'TvController@index');
+//    Route::get('/promocodes', 'PromocodeController@index');
     Route::get('/user/showAll', 'UserController@showAllUsers');
     Route::resource('user', 'UserController', ['except' => ['index']]);
     Route::get('/category/show', 'CategoryController@showAll');
     Route::resource('category', 'CategoryController', ['except' => ['index']]);
     Route::get('video/showAll', 'VideoController@showAll');
     Route::resource('video', 'VideoController', ['except' => ['index']]);
+
 });
 
 // ================ Authentication ================ //
