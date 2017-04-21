@@ -127,10 +127,10 @@
                             </a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="#">All promo</a>
+                                    <a href="{{ route('promo.show') }}">All promo</a>
                                 </li>
                                 <li>
-                                    <a href="#">Add new promo code</a>
+                                    <a href="{{ route('promo.add') }}">Add new promo code</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->

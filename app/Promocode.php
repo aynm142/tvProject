@@ -26,22 +26,11 @@ use Illuminate\Database\Eloquent\Model;
 class Promocode extends Model
 {
     /**
-     * @var bool
-     */
-    public $timestamps = false;
-
-    /**
      * @var array
      */
     protected $fillable = [
         'code',
         'id',
-        'user_id',
         'delete_time',
     ];
-
-    public function users()
-    {
-        return $this->belongsTo('App\User');
-    }
 }

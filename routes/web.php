@@ -18,8 +18,10 @@ Route::group([], function() {
 
 Route::group(['middleware' => 'AdminCheck', 'prefix' => '/dashboard'], function () {
     Route::get('/', 'TvController@index');
-    Route::get('/promo', 'PromocodeController@index');
-//    Route::get('/promocodes', 'PromocodeController@index');
+
+    Route::get('/promocodes', 'PromocodeController@index')->name('promo.show');
+    Route::get('/promocodes/add', 'PromocodeController@add')->name('promo.add');
+
     Route::get('/user/showAll', 'UserController@showAllUsers');
     Route::resource('user', 'UserController', ['except' => ['index']]);
     Route::get('/category/show', 'CategoryController@showAll');
