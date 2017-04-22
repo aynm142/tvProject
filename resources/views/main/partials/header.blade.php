@@ -40,7 +40,7 @@
                             <li><a target="blank" href="{{ url('/dashboard') }}">Dashboard</a></li>
                         @endif
                         <li><a href="#">View profile</a></li>
-                        <li><a href="#">Billing</a></li>
+                        <li><a href="#">Promocodes</a></li>
                         <li><a href="#">Subscribers</a></li>
                         <li><a href="#">Settings</a></li>
                         <li><a href="{{ url('logout') }}">Log Out</a></li>
