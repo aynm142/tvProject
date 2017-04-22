@@ -31,6 +31,9 @@
 .bootbox.modal + .modal-backdrop {
   z-index: 1070;
 }
+.border-0 {
+  border: none !important;
+}
 html,
 body,
 #wrapper {

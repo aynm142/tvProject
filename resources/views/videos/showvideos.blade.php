@@ -26,6 +26,11 @@
 						<p class="text-ellipsis">{{ $video->description }}</p>
 					</section>
 					<footer class="clearfix">
+						<div class="pull-left footer__buttons border-0">
+							<a href="#" data-href="{{ route('promo.add') }}" class="btn btn-link add-promo">
+								<i class="fa fa-ticket"></i>
+							</a>
+						</div>
 						<div class="pull-right footer__buttons">
 							<a href="{{ URL::to('/dashboard/video/' . $video->id . '/edit') }}" class="btn btn-link video-btn__delimetr--right">
 								<i class="fa fa-pencil"></i>

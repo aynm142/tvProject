@@ -129,9 +129,7 @@
                                 <li>
                                     <a href="{{ route('promo.show') }}">All promo</a>
                                 </li>
-                                <li>
-                                    <a href="{{ route('promo.add') }}">Add new promo code</a>
-                                </li>
+                                <li><a href="{{ route('promo.add') }}">Add promo code</a></li>
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>

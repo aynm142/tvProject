@@ -19,16 +19,60 @@ class PromocodeController extends Controller
 
     public function add()
     {
-        $delete_time = Carbon::now()->addHours(10);
-
-        $promo = new PromocodeGenerator();
-        dd(
-
-            $promo->generateAndSave(10, $delete_time)
-
-        );
+//        $delete_time = Carbon::now()->addHours(10);
+//
+//        $promo = new PromocodeGenerator();
+//        dd(
+//
+//            $promo->generateAndSave(10, $delete_time)
+//
+//        );
 
         return view('promocodes.add');
+    }
+
+    public function addPost(Request $request)
+    {
+    	if ( $promo_number = (int) $request->get('__generate_random') ) {
+    		// make positive
+    		$promo_number = max(1, $promo_number);
+    		// generate promo codes and save to DB
+    		(new PromocodeGenerator)->generateAndSave($promo_number);
+
+    		return redirect()->route('promo.show');
+    	}
+
+    	$this->validate($request, [
+    		'code' => 'required',
+    		'delete_time' => 'required'
+    	]);
+
+    	$code = $request->get('code');
+    	$generator = new PromocodeGenerator();
+
+    	if (!$generator->validate($code)) {
+    		return back()->withErrors([
+    			'code' => 'This promo code already taken'
+    		]);
+    	}
+
+    	$delete_time = Carbon::createFromFormat('d/m/Y H:i', $request->get('delete_time'));
+    	$promo = $generator->generateCodeName($code, $delete_time);
+
+    	if (false === $promo) {
+    		return back()->withErrors(['error' => 'Whoops some error..']);
+    	}
+
+    	return redirect()->route('promo.show');
+    }
+
+    public function generateCode()
+    {
+    	$code = (new PromocodeGenerator)->generate();
+
+    	return response()->json([
+    		'code' => $code[0]
+    	]);
     }
 
     /**

@@ -24,4 +24,11 @@ $(function() {
         }); 
     });
 
+    $(document).on('click', '.add-promo', function(e) {
+        e.preventDefault();
+        var $self = $(this);
+
+        alert( $self.data('href') );
+    });
+
 });

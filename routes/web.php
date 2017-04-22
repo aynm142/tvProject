@@ -21,6 +21,8 @@ Route::group(['middleware' => 'AdminCheck', 'prefix' => '/dashboard'], function 
 
     Route::get('/promocodes', 'PromocodeController@index')->name('promo.show');
     Route::get('/promocodes/add', 'PromocodeController@add')->name('promo.add');
+    Route::post('/promocodes/add', 'PromocodeController@addPost')->name('promo.post.add');
+    Route::get('/promocodes/generate_code', 'PromocodeController@generateCode')->name('promo.generate.code');
 
     Route::get('/user/showAll', 'UserController@showAllUsers');
     Route::resource('user', 'UserController', ['except' => ['index']]);
