@@ -155,7 +155,7 @@
                             </a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="#">Site settings</a>
+                                    <a href="{{ action('SettingsController@index') }}">Site settings</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->

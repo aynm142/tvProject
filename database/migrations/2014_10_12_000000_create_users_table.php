@@ -36,6 +36,8 @@ class CreateUsersTable extends Migration
         Schema::dropIfExists('users');
         Schema::dropIfExists('categories');
         Schema::dropIfExists('videos');
+        Schema::dropIfExists('promocodes');
+        Schema::dropIfExists('users_promo');
         DB::statement('SET FOREIGN_KEY_CHECKS = 1');
     }
 }
