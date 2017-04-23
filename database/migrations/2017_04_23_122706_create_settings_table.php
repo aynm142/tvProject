@@ -20,6 +20,12 @@ class CreateSettingsTable extends Migration
             $table->string('background_image');
             $table->timestamps();
         });
+
+        DB::table('settings')->insert([
+            'site_name' => 'VIS TV',
+            'logo_image' => url('images/settings/') . 'logo.png',
+            'background_image' => url('images/settings/') . 'background.jpg'
+        ]);
     }
 
     /**
