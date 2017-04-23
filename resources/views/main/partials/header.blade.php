@@ -9,8 +9,8 @@
         </button>
 
         <a class="navbar__logo clearfix" href="/">
-            <img src="{{ asset('/frontend/img/logo.png') }}" alt="VIS TV Logo">
-            <span class="navbar__logo-name">VIS TV</span>
+            <img src="{{ $logo_image }}" alt="VIS TV Logo">
+            <span class="navbar__logo-name">{{ $site_name }}</span>
         </a>
     </div>
     <nav class="collapse navbar-collapse" id="header__collapse">

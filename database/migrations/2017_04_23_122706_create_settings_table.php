@@ -23,8 +23,8 @@ class CreateSettingsTable extends Migration
 
         DB::table('settings')->insert([
             'site_name' => 'VIS TV',
-            'logo_image' => public_path('images/settings/') . 'logo.png',
-            'background_image' => public_path('images/settings/') . 'background.png'
+            'logo_image' => url('images/settings/') . 'logo.png',
+            'background_image' => url('images/settings/') . 'background.jpg'
         ]);
     }
 

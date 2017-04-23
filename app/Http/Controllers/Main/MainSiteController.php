@@ -22,6 +22,7 @@ class MainSiteController extends Controller
         $settings = Settings::all()->first();
         view()->share('site_name', $settings->site_name);
         view()->share('main_bg', $settings->background_image);
+        view()->share('logo_image', $settings->logo_image);
     }
 
     public function index()
