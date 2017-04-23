@@ -26,7 +26,7 @@
 						            <a class="btn btn-sm btn-default pull-left m-r-5" href="{{ URL::to('dashboard/category/' . $category->id . '/edit') }}">Edit</a>
 										{!! Form::Open(['method' => 'DELETE', 'url' => 'dashboard/category/' . $category->id, 'class' => 'pull-left']) !!}
 										<button type="submit" class="btn btn-sm btn-danger">Delete</button>
-									</form>
+										{!! Form::Close() !!}
 						        </div>
 						    </li>
 					    @endforeach
