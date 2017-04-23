@@ -32,7 +32,8 @@ class VideoController extends Controller
     public function create()
     {
         $categories_list = Category::pluck('category_name', 'id');
-        return view('videos.newvideo', compact('categories_list'));
+        $category_count = Category::count();
+        return view('videos.newvideo', compact('categories_list', 'category_count'));
     }
 
     /**
