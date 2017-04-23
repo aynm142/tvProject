@@ -22,6 +22,7 @@ Route::group(['middleware' => 'AdminCheck', 'prefix' => '/dashboard'], function 
     Route::get('/promocodes', 'PromocodeController@index')->name('promo.show');
     Route::get('/promocodes/add', 'PromocodeController@add')->name('promo.add');
     Route::post('/promocodes/add', 'PromocodeController@addPost')->name('promo.post.add');
+    Route::delete('/promocodes/delete/{id}', 'PromocodeController@delete')->name('promo.post.delete');
     Route::get('/promocodes/generate_code', 'PromocodeController@generateCode')->name('promo.generate.code');
 
     Route::resource('user', 'UserController');

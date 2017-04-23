@@ -5,6 +5,7 @@
         <div class="col-lg-12">
             <h3 class="page-header">
                 <i class="fa fa-list"></i> All Promo Codes
+                <a href="{{ route('promo.add') }}" class="btn btn-success btn-sm m-l-20"><i class="fa fa-plus"></i> Add new promo code</a>
             </h3>
         </div>
         <!-- /.col-lg-12 -->
@@ -17,18 +18,28 @@
                 </div>
                 <!-- .panel-heading -->
                 <div class="panel-body">
-                    <ul class="list-group ov-h">
-                        @foreach($all_promo as $key => $promo)
-                            <li class="list-group-item" title="{{ $promo->code }}">
-                                {{ str_limit($promo->code, 75) }}
+                    @if ( count($all_promo) )
+                        <ul class="list-group ov-h">
+                            @foreach($all_promo as $key => $promo)
+                                <li class="list-group-item" title="{{ $promo->code }}">
+                                    {{ str_limit($promo->code, 75) }}
 
-                                <div class="action-buttons">
-                                    <a class="btn btn-sm btn-default pull-left m-r-5" href="#">Edit</a>
-                                    <a class="btn btn-sm btn-danger pull-left m-r-5" href="#">Delete</a>
-                                </div>
-                            </li>
-                        @endforeach
-                    </ul>
+                                    <div class="action-buttons">
+                                        <a class="btn btn-sm btn-default pull-left m-r-5" href="#">Edit</a>
+                                        {!! Form::Open(['method' => 'DELETE', 'url' => route('promo.post.delete', ['id' => $promo->id]), 'class' => 'pull-left']) !!}
+                                            <button type="submit" class="btn btn-sm btn-danger pull-left m-r-5">Delete</button>
+                                        {!! Form::Close() !!}
+                                    </div>
+                                </li>
+                            @endforeach
+                        </ul>
+                    @else
+                        <div class="text-center alert alert-warning" style="margin-top: 10px;">
+                            <p>
+                                First, add at least one <a href="{{ route('promo.add') }}">promotional code</a>
+                            </p>
+                        </div>
+                    @endif
                 </div>
                 <!-- .panel-body -->
             </div>
