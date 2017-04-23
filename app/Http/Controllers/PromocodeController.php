@@ -17,17 +17,18 @@ class PromocodeController extends Controller
         return view('promocodes.promo', compact('all_promo'));
     }
 
+    public function delete($id)
+    {
+        $code = Promocode::find($id);
+        if ($code) {
+            $code->delete();
+        }
+
+        return redirect()->route('promo.show');
+    }
+
     public function add()
     {
-//        $delete_time = Carbon::now()->addHours(10);
-//
-//        $promo = new PromocodeGenerator();
-//        dd(
-//
-//            $promo->generateAndSave(10, $delete_time)
-//
-//        );
-
         return view('promocodes.add');
     }
 
