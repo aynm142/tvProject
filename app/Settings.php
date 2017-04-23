@@ -8,6 +8,8 @@ class Settings extends Model
 {
     protected $table = 'settings';
 
+    public $timestamps = false;
+
     /**
      * @var array
      */
@@ -15,5 +17,6 @@ class Settings extends Model
         'logo_image',
         'site_name',
         'background_image',
+        'banner',
     ];
 }

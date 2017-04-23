@@ -18,13 +18,15 @@ class CreateSettingsTable extends Migration
             $table->string('site_name');
             $table->string('logo_image');
             $table->string('background_image');
-            $table->timestamps();
+            $table->boolean('banner');
         });
 
+        // default settings
         DB::table('settings')->insert([
             'site_name' => 'VIS TV',
-            'logo_image' => url('images/settings/') . 'logo.png',
-            'background_image' => url('images/settings/') . 'background.jpg'
+            'logo_image' => url('images/settings') . '/logo.png',
+            'background_image' => url('images/settings') . '/background.jpg',
+            'banner' => true,
         ]);
     }
 

@@ -12,27 +12,38 @@ class MainSiteController extends Controller
 {
     public function __construct()
     {
-        $categories = Category::
-        where('category_name', '!=', 'None Category')
+        parent::__construct();
+        $categories = Category::where('category_name', '!=', 'None Category')
             ->orderBy('category_name')
             ->get();
-
         view()->share('categories', $categories);
 
         $settings = Settings::all()->first();
         view()->share('site_name', $settings->site_name);
         view()->share('main_bg', $settings->background_image);
         view()->share('logo_image', $settings->logo_image);
+        view()->share('banner', $settings->banner);
     }
 
-    public function index()
+    /**
+     * Show main page
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function index ()
     {
         return view('main.index.home');
     }
 
-    public function video($id, $name)
+    /**
+     * Show page with current video
+     *
+     * @param $id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function video($id)
     {
-
+        $video = null;
         try {
             $video = Video::findOrFail($id);
         } catch (\Exception $e) {
@@ -51,6 +62,6 @@ class MainSiteController extends Controller
 
     public function main()
     {
-
+        //
     }
 }

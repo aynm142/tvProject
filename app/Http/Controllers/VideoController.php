@@ -19,7 +19,9 @@ class VideoController extends Controller
      */
     public function index()
     {
-        //
+        $videos = Video::orderBy('created_at', 'desc')
+            ->get();
+        return view('videos.showvideos', compact('videos'));
     }
 
     /**
@@ -77,10 +79,10 @@ class VideoController extends Controller
 
         $video->save();
 
-        $this->__newVideoNotification($video->category_id);
+//        $this->__newVideoNotification($video->category_id);
 
         // if ajax then send json response
-        if ( request()->ajax() ) {
+        if (request()->ajax()) {
             return response()->json([
                 'status' => true,
                 'redirect_url' => url('/dashboard'),
@@ -113,7 +115,7 @@ class VideoController extends Controller
     public function update(Request $request, $id)
     {
         // fix for jQuery ajaxForm
-        if ( $request->ajax() ) {
+        if ($request->ajax()) {
             $vid_file = request('video_url');
             if (is_array($vid_file) && in_array(null, $vid_file)) {
                 $request->merge(['video_url' => null]);
@@ -122,14 +124,14 @@ class VideoController extends Controller
 
         // validation rules
         $validation_rules = [];
-        if ( request('logo_url') ) {
+        if (request('logo_url')) {
             $validation_rules['logo_url'] = 'required|image|mimes:jpeg,bmp,png,jpg';
         }
 
-        if ( request('background_url') ) {
+        if (request('background_url')) {
             $validation_rules['background_url'] = 'required|image|mimes:jpeg,bmp,png,jpg';
         }
-        if ( request('video_url') ) {
+        if (request('video_url')) {
             $validation_rules['video_url.*'] = 'required|mimetypes:video/mp4';
         }
 
@@ -142,17 +144,17 @@ class VideoController extends Controller
         $old_video_links = array_unique((array)$request->old_video);
 
         // check if have at least one video file
-        if ( !count($old_video_links) && is_null(request()->video_url) ) {
+        if (!count($old_video_links) && is_null(request()->video_url)) {
             $mess = ['video_upload' => 'The video must have at least one video file!'];
-            
-            if ( $request->ajax() ) {
+
+            if ($request->ajax()) {
                 return response()->json($mess);
             } else {
                 return back()
                     ->withErrors($mess)
                     ->withInput();
             }
-            
+
         }
 
         foreach ($video->getVideoUrl() as $link) {
@@ -194,8 +196,8 @@ class VideoController extends Controller
             $video->save();
         } catch (\Exception $e) {
             $mess = ['message' => 'Unable to update video.'];
-            
-            if ( $request->ajax() ) {
+
+            if ($request->ajax()) {
                 return response()->json($mess);
             } else {
                 // return to back and display error message
@@ -206,7 +208,7 @@ class VideoController extends Controller
         }
 
         // if ajax then send json response
-        if ( $request->ajax() ) {
+        if ($request->ajax()) {
             return response()->json([
                 'status' => true,
                 'redirect_url' => url('/dashboard/video/showAll'),
@@ -234,14 +236,6 @@ class VideoController extends Controller
         }
         $video->delete();
         return redirect('/dashboard/video/showAll');
-    }
-
-    public function showAll()
-    {
-        $videos = Video::
-        orderBy('created_at', 'desc')
-        ->get();
-        return view('videos.showvideos', compact('videos'));
     }
 
     protected function __deleteOldFileByLink($link)

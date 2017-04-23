@@ -8,7 +8,20 @@ use App\Category;
 class CategoryController extends Controller
 {
     /**
-     * Show the form for creating a new resource.
+     * Show all categories
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function index()
+    {
+        $categories = Category::where('category_name', '!=', 'None category')
+            ->orderBy('category_name')
+            ->get();
+        return view('categories.showcat', compact('categories'));
+    }
+
+    /**
+     * Show the form for creating a new category.
      *
      * @return \Illuminate\Http\Response
      */
@@ -18,7 +31,7 @@ class CategoryController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Store a newly created category in storage.
      *
      * @param  \App\Http\Requests\CategoryRequest $request
      * @return \Illuminate\Http\Response
@@ -30,7 +43,7 @@ class CategoryController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Show the form for editing category.
      *
      * @param  int $id
      * @return \Illuminate\Http\Response
@@ -43,7 +56,7 @@ class CategoryController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Update category in storage.
      *
      * @param  \App\Http\Requests\CategoryRequest $request
      * @param  int $id
@@ -51,31 +64,19 @@ class CategoryController extends Controller
      */
     public function update(CategoryRequest $request, $id)
     {
-        $category = Category::findOrFail($id);
-        $category->update($request->all());
+        Category::findOrFail($id)->update($request->all);
         return redirect('dashboard/category/show');
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Remove category from storage.
      *
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        $category = Category::findOrFail($id);
-        $category->delete();
-
+        Category::findOrFail($id)->delete();
         return redirect('dashboard/category/show');
-    }
-
-    public function showAll()
-    {
-        $categories = Category::
-            where('category_name', '!=', 'None category')
-            ->orderBy('category_name')
-            ->get();
-        return view('categories.showcat', compact('categories'));
     }
 }

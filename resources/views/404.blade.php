@@ -9,6 +9,6 @@
 </head>
 <body>
     <h1>Page not found</h1>
-    <p>It's not a bug, just need create a new 404 page</p>
+    <p>This is not a bug, just need create a new 404 page</p>
 </body>
 </html>

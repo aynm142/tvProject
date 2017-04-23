@@ -17,21 +17,16 @@ Route::group([], function() {
 });
 
 Route::group(['middleware' => 'AdminCheck', 'prefix' => '/dashboard'], function () {
-    Route::get('/', 'TvController@index');
+    Route::get('/', 'DashboardController@index');
 
     Route::get('/promocodes', 'PromocodeController@index')->name('promo.show');
     Route::get('/promocodes/add', 'PromocodeController@add')->name('promo.add');
     Route::post('/promocodes/add', 'PromocodeController@addPost')->name('promo.post.add');
     Route::get('/promocodes/generate_code', 'PromocodeController@generateCode')->name('promo.generate.code');
 
-    Route::get('/user/showAll', 'UserController@showAllUsers');
-    Route::resource('user', 'UserController', ['except' => ['index']]);
-
-    Route::get('/category/show', 'CategoryController@showAll');
-    Route::resource('category', 'CategoryController', ['except' => ['index']]);
-
-    Route::get('video/showAll', 'VideoController@showAll');
-    Route::resource('video', 'VideoController', ['except' => ['index']]);
+    Route::resource('user', 'UserController');
+    Route::resource('category', 'CategoryController');
+    Route::resource('video', 'VideoController');
 
     Route::get('settings', 'SettingsController@index');
     Route::patch('settings', 'SettingsController@update');

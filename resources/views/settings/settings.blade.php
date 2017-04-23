@@ -7,7 +7,9 @@
     {!! Form::label('site_name', 'Logo image:') !!}
     {!! Form::text('logo_image', null) !!}<br>
     {!! Form::label('background_image', 'Background image:') !!}
-    {!! Form::text('background_image', null) !!}
+    {!! Form::text('background_image', null) !!}<br>
+    {!! Form::label('banner', 'Banner on\off') !!}
+    {!! Form::select('banner', ['No', 'Yes'], null, ['required' => 'required']) !!}
     {!! Form::submit() !!}
     {!! Form::close() !!}
 @endsection

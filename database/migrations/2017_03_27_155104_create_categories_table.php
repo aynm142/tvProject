@@ -16,11 +16,8 @@ class CreateCategoriesTable extends Migration
         Schema::create('categories', function (Blueprint $table) {
             $table->increments('id');
             $table->string('category_name');
+            $table->string('category_background');
         });
-
-        DB::table('categories')->insert([
-            'category_name' => 'None category'
-        ]);
     }
 
     /**

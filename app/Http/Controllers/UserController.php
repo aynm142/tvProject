@@ -9,7 +9,18 @@ class UserController extends Controller
 {
 
     /**
-     * Show the form for creating a new resource.
+     * show all users
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function index()
+    {
+        $users = User::all();
+        return view("users.showusers", compact("users"));
+    }
+
+    /**
+     * Show the form for creating a new user.
      *
      * @return \Illuminate\Http\Response
      */
@@ -19,7 +30,7 @@ class UserController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Store a newly created user in storage.
      *
      * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
@@ -40,7 +51,7 @@ class UserController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Display the specified user.
      *
      * @param  int $id
      * @return \Illuminate\Http\Response
@@ -123,14 +134,13 @@ class UserController extends Controller
                 return back()->withErrors(['error' => 'Must be at least one administrator']);
             }
         }
-
         $user->update($data);
 
         return redirect('/dashboard/user/showAll');
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Remove user from storage.
      *
      * @param  int $id
      * @return \Illuminate\Http\Response|mixed
@@ -160,6 +170,7 @@ class UserController extends Controller
         return redirect('/dashboard/user/showAll');
     }
 
+    // api for sign in on android device
     public function api(Request $request)
     {
         $data = $request->All();
@@ -194,11 +205,5 @@ class UserController extends Controller
         } else {
             return response()->json(['response' => 'Something wrong'], 401);
         }
-    }
-
-    public function showAllUsers()
-    {
-        $users = User::all();
-        return view("users.showusers", compact("users"));
     }
 }

@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>VIS TV :: Dashboard</title>
+    <title>{{ $site_name }} :: Dashboard</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="{{ asset('admin/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
@@ -86,7 +86,7 @@
                             </a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="{{ action('TvController@index') }}">Dashboard</a>
+                                    <a href="{{ action('DashboardController@index') }}">Dashboard</a>
                                 </li>
                             </ul>
                         </li>
@@ -97,10 +97,10 @@
                             </a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="{{ action('CategoryController@showAll') }}">All categories</a>
+                                    <a href="{{ action('CategoryController@index') }}">All categories</a>
                                 </li>
                                 <li>
-                                    <a href="{{ route('category.create') }}">Add new categories</a>
+                                    <a href="{{ action('CategoryController@create') }}">Add new categories</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
@@ -112,10 +112,10 @@
                             </a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="{{ action('VideoController@showAll') }}">All Videos</a>
+                                    <a href="{{ action('VideoController@index') }}">All Videos</a>
                                 </li>
                                 <li>
-                                    <a href="{{ route('video.create') }}">Add Videos</a>
+                                    <a href="{{ action('VideoController@create') }}">Add Videos</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
@@ -140,7 +140,7 @@
                             </a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="{{ action('UserController@showAllUsers') }}">All users</a>
+                                    <a href="{{ action('UserController@index') }}">All users</a>
                                 </li>
                                 <li>
                                     <a href="{{ action('UserController@create') }}">Add users</a>
