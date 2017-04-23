@@ -26,7 +26,7 @@
 					<div class="col-sm-9">
 						<div class="input-group">
 							<span class="input-group-btn">
-								<button id="generate_code" data-href="{{ route('promo.generate.code') }}" class="btn btn-default" type="button" title="generate random code">
+								<button id="generate_code" data-href="{{ route('promo.generate.code') }}" class="btn btn-default" type="button" title="generate random code" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> Generate random promo code">
 									<i class="fa fa-question-circle-o"></i>
 								</button>
 							</span>
@@ -79,6 +79,8 @@
 		$('#generate_code').click(function(event) {
 			event.preventDefault();
 			var url = $(this).data('href');
+			var $this = $(this);
+
 			var errorCb = function() {
 				bootbox.alert('Whoops... some problem..');
 			};
@@ -87,6 +89,8 @@
 				alert('URL not found');
 				return;
 			}
+
+			$this.button('loading');
 
 			$.ajax({
 				url: url,
@@ -98,6 +102,7 @@
 				} else {
 					errorCb();
 				}
+				$this.button('reset');
 			}).catch(errorCb);
 		});
 
