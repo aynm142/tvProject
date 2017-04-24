@@ -25,7 +25,7 @@
                                     {{ str_limit($promo->code, 75) }}
 
                                     <div class="action-buttons">
-                                        <a class="btn btn-sm btn-default pull-left m-r-5" href="#">Edit</a>
+                                        <a class="btn btn-sm btn-default pull-left m-r-5" href="{{ route('promo.edit', ['id' => $promo->id]) }}">Edit</a>
                                         {!! Form::Open(['method' => 'DELETE', 'url' => route('promo.post.delete', ['id' => $promo->id]), 'class' => 'pull-left']) !!}
                                             <button type="submit" class="btn btn-sm btn-danger pull-left m-r-5">Delete</button>
                                         {!! Form::Close() !!}

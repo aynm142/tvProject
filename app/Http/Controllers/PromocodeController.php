@@ -17,6 +17,34 @@ class PromocodeController extends Controller
         return view('promocodes.promo', compact('all_promo'));
     }
 
+    public function edit(Request $request, $id)
+    {
+        try {
+            $promo = Promocode::findOrFail($id);
+        } catch (\Exception $e) {
+            abort(404);
+        }
+
+        if ( 'POST' === $request->getMethod() ) {
+            $code = $request->get('code');
+            if ( !$code ) return back()->withErrors(['code' => 'Promo code name required']); 
+
+            $promo->code = $code;
+
+            if ( $delete_time = $request->get('delete_time') ) {
+                $promo->delete_time = Carbon::createFromFormat('d/m/Y H:i', $delete_time);
+            }
+            
+            $promo->save();
+
+            return redirect()->route('promo.show');
+        }
+        
+        $promo->delete_time = Carbon::parse($promo->delete_time)->format('d/m/Y H:i');
+
+        return view('promocodes.edit', compact('promo'));
+    }
+
     public function delete($id)
     {
         $code = Promocode::find($id);
